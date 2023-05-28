@@ -10,6 +10,7 @@ public class Person {
     private List<Integer> numberList = new ArrayList<>();
 
     public void inputStringToNumber(String str) { //987
+        numberList.clear();
         for (int i = 0; i < str.length(); i++) {
             String s = str.substring(i, i + 1);
             Integer num = Integer.parseInt(s);
