@@ -5,6 +5,7 @@ import domain.Computer;
 import domain.Person;
 import utils.BaseBallGenerator;
 import utils.BaseBallNumberValidator;
+import utils.InputValidator;
 
 import java.util.List;
 
@@ -13,10 +14,12 @@ public class GameController {
     Person person;
     Computer computer;
     BaseBallNumberValidator validator;
+    InputValidator inputValidator;
     public GameController(){
         this.person = new Person();
         this.computer = new Computer();
         this.validator = new BaseBallNumberValidator();
+        this.inputValidator = new InputValidator();
     }
     public void gameStart(){
         computer.runGeneratorNumber();
@@ -26,6 +29,7 @@ public class GameController {
         while(true){
             System.out.print("숫자를 입력해주세요 :");
             String str = Console.readLine();
+            inputValidator.checkInputNumber(str);
 
             person.inputStringToNumber(str);
             List<Integer> personNumberList = person.getNumberList(); //나의 숫자
