@@ -13,7 +13,7 @@ public class Computer {
     public void runGeneratorNumber(){
         //baseBallGenerator 생성기에서 숫자를 받아올 수 있죠?
         List<Integer> generatedList = baseBallGenerator.generateNumber();
-
+        numberList.clear();
         for (Integer i : generatedList){
             numberList.add(i);
         }
