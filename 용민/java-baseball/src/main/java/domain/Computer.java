@@ -12,7 +12,7 @@ public class Computer {
 
     public void runGeneratorNumber() {
         List<Integer> generatedList = baseBallGenerator.generateNumber();
-
+        numberList.clear();
        for(Integer i : generatedList) {
          numberList.add(i);
        }
