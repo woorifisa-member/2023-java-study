@@ -15,14 +15,10 @@ public class Person {
     public void inputStringToNumber(String str) {
         inputValidator.checkInputNumber(str);
         numberList.clear();
-        for (int i = 0; i < str.length(); i++) {
-            String s = str.substring(i, i + 1);
-            Integer num = Integer.parseInt(s);
-            numberList.add(num);
-        }
-//        numberList = IntStream.range(0,str.length())
-//                .mapToObj( i -> Integer.parseInt(String.valueOf(str.charAt(i))))
-//                .collect(Collectors.toList());
+
+        numberList = IntStream.range(0,str.length())
+                .mapToObj( i -> Integer.parseInt(String.valueOf(str.charAt(i))))
+                .collect(Collectors.toList());
     }
 
     public List<Integer> getNumberList(){
