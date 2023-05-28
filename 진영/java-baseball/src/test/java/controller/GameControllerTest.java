@@ -15,7 +15,7 @@ class GameControllerTest {
     void 숫자3개_입력받아_저장하기() {
         Person person = new Person();
         String str = "987";
-        person.inputStringToNumber(str);
+        person.saveNumber(str);
 
         List<Integer> findList = person.getNumberList();
         for (int i = 0; i < findList.size(); i++) {

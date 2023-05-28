@@ -6,6 +6,7 @@ import domain.Person;
 import utils.BaseBallGenerator;
 import utils.BaseBallNumberValidator;
 import utils.InputValidator;
+import view.InputView;
 
 import java.util.List;
 
@@ -13,11 +14,13 @@ public class GameController {
     private Person person;
     private Computer computer;
     private BaseBallNumberValidator validator;
+    private InputView inputView;
 
     public GameController() {
         this.person = new Person();
         this.computer = new Computer();
         this.validator = new BaseBallNumberValidator();
+        this.inputView = new InputView();
     }
 
     public void gameStart() {
@@ -32,13 +35,10 @@ public class GameController {
     public void gameProgress(){
         computerInit();
         while (true) {
-            System.out.print("숫자를 입력해주세요 :");
-            String str = Console.readLine();
-
-            person.inputStringToNumber(str);
+            person.saveNumber(inputView.inputNumber());
             List<Integer> personNumberList = person.getNumberList(); //나의 숫자
             List<Integer> aiNumberList = computer.getNumberList();
-            Boolean resultTag = validator.checkInningResult(aiNumberList, personNumberList);
+            boolean resultTag = validator.checkInningResult(aiNumberList, personNumberList);
 
             if (resultTag) {
                 System.out.println("3스트라이크");

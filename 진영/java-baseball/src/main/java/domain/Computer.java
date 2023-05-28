@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    BaseBallGenerator baseBallGenerator = new BaseBallGenerator();
-
+    private BaseBallGenerator baseBallGenerator = new BaseBallGenerator();
     private List<Integer> numberList = new ArrayList<>(); //컴퓨터 객체만의 넘버리스트
 
     public void runGeneratorNumber(){

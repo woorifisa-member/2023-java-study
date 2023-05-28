@@ -12,7 +12,7 @@ public class Person {
     private List<Integer> numberList = new ArrayList<>();
     private InputValidator inputValidator = new InputValidator();
 
-    public void inputStringToNumber(String str) {
+    public void saveNumber(String str) {
         inputValidator.checkInputNumber(str);
         numberList.clear();
 
