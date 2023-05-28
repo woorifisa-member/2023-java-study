@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class BaseballGame {
-  int strike = 0;
-  int ball = 0;
+  private int strike = 0;
+  private int ball = 0;
   List<Integer> computerRandom;
   void playGame() throws IllegalArgumentException {
     computerRandom =  Randoms.pickUniqueNumbersInRange(1,9,3);
@@ -15,7 +15,7 @@ public class BaseballGame {
       ball = 0;
       System.out.print("숫자를 입력해주세요 : ");
       String[] userNumbers = Console.readLine().split("");
-      matchNumbers(computerRandom,userNumbers);
+      compareNumbers(userNumbers);
       gameResult();
       if(strike == 3) {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -26,14 +26,13 @@ public class BaseballGame {
         }
         if(inputNextStep == 1) {
           playGame();
-        } else {
-          break;
         }
+        break;
       }
     }
   }
 
-  void matchNumbers(List<Integer> computerRandom, String[] userNumbers) throws IllegalArgumentException {
+  void compareNumbers( String[] userNumbers) throws IllegalArgumentException {
     if(userNumbers.length != 3) {
       exceptionGameSet("3개의 숫자를 연속으로 입력 해주세요");
     }
@@ -42,19 +41,22 @@ public class BaseballGame {
       if(inputNum == 0) {
         exceptionGameSet("1 - 9 사이의 값만 입력할 수 있습니다");
       }
-      for(int j = 0; j < 3; j++) {
-        if(computerRandom.get(j) != inputNum) {
-          continue;
-        }
-        if(i == j) {
-          strike += 1;
-        } else {
-          ball += 1;
-        }
-      }
+      countStrikeBall( i, inputNum);
     }
   }
 
+  void countStrikeBall(int i, int inputNum) {
+    for(int j = 0; j < 3; j++) {
+      if(computerRandom.get(j) != inputNum) {
+        continue;
+      }
+      if(i == j) {
+        strike += 1;
+      } else {
+        ball += 1;
+      }
+    }
+  }
   void gameResult() {
     if(strike == 0 && ball > 0) {
       System.out.printf("%d볼%n",ball);
@@ -67,7 +69,6 @@ public class BaseballGame {
     }
   }
   void exceptionGameSet(String errorMessage) {
-
     throw new IllegalArgumentException(errorMessage);
   }
 

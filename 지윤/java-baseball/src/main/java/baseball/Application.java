@@ -8,7 +8,7 @@ public class Application {
             baseball.playGame();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-            System.exit(0);
+            return;
         }
     }
 }
