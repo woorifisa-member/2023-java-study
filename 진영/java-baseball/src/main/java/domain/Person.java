@@ -16,12 +16,12 @@ public class Person {
         inputValidator.checkInputNumber(str);
         numberList.clear();
 
-        numberList = IntStream.range(0,str.length())
-                .mapToObj( i -> Integer.parseInt(String.valueOf(str.charAt(i))))
+        numberList = IntStream.range(0, str.length())
+                .mapToObj(i -> Integer.parseInt(String.valueOf(str.charAt(i))))
                 .collect(Collectors.toList());
     }
 
-    public List<Integer> getNumberList(){
+    public List<Integer> getNumberList() {
         return this.numberList;
     }
 

@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseBallGenerator implements NumberGenerator{
+public class BaseBallGenerator implements NumberGenerator {
     @Override
     public List<Integer> generateNumber() {
         List<Integer> numList = new ArrayList<>();
