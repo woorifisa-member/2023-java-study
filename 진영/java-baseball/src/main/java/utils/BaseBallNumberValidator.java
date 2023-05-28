@@ -23,7 +23,13 @@ public class BaseBallNumberValidator {
             if(strike>0){
                 System.out.print(strike+"스트라이크");
             }
-            System.out.println();
+            if (ball>0 || strike >0){
+                System.out.println();
+            }
+            if(ball ==0 && strike ==0){
+                System.out.println("낫싱");
+            }
+
             ball =0;
             strike =0;
             return false;

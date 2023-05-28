@@ -22,15 +22,16 @@ public class GameController {
         computer.runGeneratorNumber();
         List<Integer> aiNumberList = computer.getNumberList(); //컴퓨터 숫자
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while(true){
             System.out.print("숫자를 입력해주세요 :");
             String str = Console.readLine();
-            System.out.println();
 
             person.inputStringToNumber(str);
             List<Integer> personNumberList = person.getNumberList(); //나의 숫자
 
             Boolean resultTag = validator.checkInningResult(aiNumberList,personNumberList);
+
 
             if(resultTag){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
