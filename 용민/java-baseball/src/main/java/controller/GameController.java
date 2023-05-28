@@ -26,10 +26,10 @@ public class GameController {
         computer.runGeneratorNumber();
         List<Integer> aiNumberList = computer.getNumberList();
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             System.out.print("숫자를 입력해주세요 :");
             String str = Console.readLine();
-            System.out.println();
 
             person.inputStringToNumber(str);
             List<Integer> personNumberList = person.getNumberList();
