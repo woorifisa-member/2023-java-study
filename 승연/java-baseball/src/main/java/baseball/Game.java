@@ -13,6 +13,8 @@ public class Game {
     private final static int MIN_NUM = 1;
     private final static int MAX_NUM = 9;
     private final static int MAX_NUM_SIZE = 3;
+    private final static String inputMessage = "숫자를 입력해주세요 : ";
+
     ArrayList<Integer> answerNumberList = new ArrayList<Integer>();
 
     public ArrayList<Integer> GetAnswerNumber() {
@@ -28,6 +30,21 @@ public class Game {
             answerNumberList.add(number);
         }
     }
+
+    public void gameStart(){
+        System.out.print(inputMessage);
+        String input = Console.readLine();
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 
