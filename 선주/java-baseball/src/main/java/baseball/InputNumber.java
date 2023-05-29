@@ -12,9 +12,9 @@ public class InputNumber {
 
         String str = reader.readLine();
         
-        if (str == null || str.length() < 3) {
+        if (str == null || str.length() != 3) {
         	 throw new IllegalArgumentException("잘못된 값을 입력했습니다");
-        }else {
+		}else {
         	
         	int[] userNumber = new int[str.length()];
         	
