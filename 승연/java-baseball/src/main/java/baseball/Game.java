@@ -33,11 +33,17 @@ public class Game {
     }
 
     public void gameStart(){
+        ArrayList<Integer> answerNumberList = GetAnswerNumber();
         System.out.print(inputMessage);
         String tmp = Console.readLine();
+        // 문자 입력 예외처리
+        try{
+            int input = Integer.parseInt(tmp);
+        }catch(IllegalArgumentException e){
+            System.out.println("에러 메시지 : 문자는 입력할 수 없습니다.");
+        }
 
         try{
-            // 문자 입력 예외처리 // 고의 에러 발생이 아닐 경우 예외처리 메시지 ?
             int input = Integer.parseInt(tmp);
             // 세자릿수보다 작은 수가 입력된 경우 예외처리
             if ((int)(Math.log10(input)+1) < 3){
@@ -52,6 +58,32 @@ public class Game {
         }
         }catch(IllegalArgumentException e){
             System.out.println("에러 메세지 : " + e.getMessage());
+        }
+        int input = Integer.parseInt(tmp);
+        int[] inputIntArray = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
+        int strike = 0;
+        int ball = 0;
+        for (int i=0; i<answerNumberList.size(); i++){
+            for (int j=0; j<inputIntArray.length; j++){
+                if ((i == j) && (answerNumberList.get(i) == inputIntArray[j])) {
+                    strike += 1;
+                }else if (answerNumberList.get(i) == inputIntArray[j]){
+                    ball += 1;
+                }
+            }
+        }
+
+        if (strike == 3){
+            System.out.println(strike+"스트라이크");
+            // TODO 시스템 종료, 시스템 재시작
+        }else if (strike == 0 && ball == 0){
+            System.out.println("낫싱");
+        }else if (strike == 0 && ball != 0){
+            System.out.println(ball+"볼");
+        }else if (ball == 0 && strike != 0){
+            System.out.println(strike+"스트라이크");
+        }else{
+            System.out.println(ball+"볼 "+strike+"스트라이크");
         }
     }
 
