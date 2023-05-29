@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
 
 public class BaseballGame {
 
@@ -19,7 +18,6 @@ public class BaseballGame {
 
     while (true) {
       gameInit();
-      System.out.println(Arrays.toString(computerNumbers));
       System.out.print("숫자를 입력해주세요 : ");
       String[] userNumbers = Console.readLine().split("");
       if (userNumbers.length != 3) {
