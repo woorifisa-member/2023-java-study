@@ -41,13 +41,14 @@ public class Game {
             int input = Integer.parseInt(tmp);
         }catch(IllegalArgumentException e){
             System.out.println("에러 메시지 : 문자는 입력할 수 없습니다.");
+            System.exit(0);
         }
 
         try{
             int input = Integer.parseInt(tmp);
-            // 세자릿수보다 작은 수가 입력된 경우 예외처리
-            if ((int)(Math.log10(input)+1) < 3){
-                throw new IllegalArgumentException("세자릿수보다 작은 값을 입력할 수 없습니다.");
+            // 세자릿수가 아닌 경우 예외처리
+            if ((int)(Math.log10(input)+1) != 3){
+                throw new IllegalArgumentException("세자릿수만 입력 가능합니다.");
             }
             // 중복된 숫자가 있는 경우 예외처리
             int[] inputIntArray = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
@@ -58,6 +59,7 @@ public class Game {
             }
         }catch(IllegalArgumentException e){
             System.out.println("에러 메세지 : " + e.getMessage());
+            System.exit(0);
         }
         int input = Integer.parseInt(tmp);
         int[] inputIntArray = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
@@ -76,7 +78,6 @@ public class Game {
         if (strike == 3){
             System.out.println(strike+"스트라이크");
             System.exit(0);
-            // TODO 시스템 재시작
         }else if (strike == 0 && ball == 0){
             System.out.println("낫싱");
             gameRound(answerNumberList);
