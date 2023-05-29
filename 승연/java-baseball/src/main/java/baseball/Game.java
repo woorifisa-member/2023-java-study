@@ -33,7 +33,6 @@ public class Game {
     }
 
     public void gameRound(ArrayList<Integer> answerNumberList){
-//        final ArrayList<Integer> answerNumberList = answerNumberList;
         System.out.print(inputMessage);
         String tmp = Console.readLine();
         // 문자 입력 예외처리
@@ -41,7 +40,7 @@ public class Game {
             int input = Integer.parseInt(tmp);
         }catch(IllegalArgumentException e){
             System.out.println("에러 메시지 : 문자는 입력할 수 없습니다.");
-            return;
+            System.exit(0);
         }
 
         try{
@@ -59,7 +58,7 @@ public class Game {
             }
         }catch(IllegalArgumentException e){
             System.out.println("에러 메세지 : " + e.getMessage());
-            return;
+            System.exit(0);
         }
         int input = Integer.parseInt(tmp);
         int[] inputIntArray = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
@@ -77,6 +76,7 @@ public class Game {
 
         if (strike == 3){
             System.out.println(strike+"스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return;
         }else if (strike == 0 && ball == 0){
             System.out.println("낫싱");
@@ -97,9 +97,14 @@ public class Game {
         final ArrayList<Integer> answerNumberList = GetAnswerNumber();
         // 게임 라운드 시작
         gameRound(answerNumberList);
-
-
-
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String stringIsRestart = Console.readLine();
+        int isRestart = Integer.parseInt(stringIsRestart);
+        if (isRestart == 1){
+            gameRound(answerNumberList);
+        }else{
+            System.exit(0);
+        }
     }
 
 
