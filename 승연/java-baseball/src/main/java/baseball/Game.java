@@ -41,7 +41,7 @@ public class Game {
             int input = Integer.parseInt(tmp);
         }catch(IllegalArgumentException e){
             System.out.println("에러 메시지 : 문자는 입력할 수 없습니다.");
-            System.exit(0);
+            return;
         }
 
         try{
@@ -59,7 +59,7 @@ public class Game {
             }
         }catch(IllegalArgumentException e){
             System.out.println("에러 메세지 : " + e.getMessage());
-            System.exit(0);
+            return;
         }
         int input = Integer.parseInt(tmp);
         int[] inputIntArray = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
@@ -77,7 +77,7 @@ public class Game {
 
         if (strike == 3){
             System.out.println(strike+"스트라이크");
-            System.exit(0);
+            return;
         }else if (strike == 0 && ball == 0){
             System.out.println("낫싱");
             gameRound(answerNumberList);
@@ -97,6 +97,7 @@ public class Game {
         final ArrayList<Integer> answerNumberList = GetAnswerNumber();
         // 게임 라운드 시작
         gameRound(answerNumberList);
+
 
 
     }
