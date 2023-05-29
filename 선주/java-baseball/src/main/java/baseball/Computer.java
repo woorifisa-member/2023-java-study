@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Computer {
 	
-	public static Integer[] main() {
+	public static Integer[] computer() {
 		
 		Set<Integer> setNumber = new HashSet<>();
 		

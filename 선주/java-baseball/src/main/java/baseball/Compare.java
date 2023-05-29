@@ -2,7 +2,7 @@ package baseball;
 
 public class Compare {
 
-	public static int main(int[] user_number, Integer[] computer_number) {
+	public static int compare(int[] user_number, Integer[] computer_number) {
 		// TODO Auto-generated method stub
 
 		int strike = 0;

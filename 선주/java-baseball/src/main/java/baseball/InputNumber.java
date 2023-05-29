@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class InputNumber {
 
-	public static int[] main() throws IOException {
+	public static int[] inputNumber() throws IOException {
 		System.out.printf("숫자를 입력해주세요 :");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
