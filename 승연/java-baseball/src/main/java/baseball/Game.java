@@ -32,8 +32,8 @@ public class Game {
         }
     }
 
-    public void gameStart(){
-        ArrayList<Integer> answerNumberList = GetAnswerNumber();
+    public void gameRound(ArrayList<Integer> answerNumberList){
+//        final ArrayList<Integer> answerNumberList = answerNumberList;
         System.out.print(inputMessage);
         String tmp = Console.readLine();
         // 문자 입력 예외처리
@@ -55,7 +55,7 @@ public class Game {
             Set<Integer> inputSet = new HashSet<Integer>(Arrays.asList(inputIntegerArray));
             if (inputSet.size() < 3){
                 throw new IllegalArgumentException("중복된 값을 입력할 수 없습니다.");
-        }
+            }
         }catch(IllegalArgumentException e){
             System.out.println("에러 메세지 : " + e.getMessage());
         }
@@ -75,17 +75,31 @@ public class Game {
 
         if (strike == 3){
             System.out.println(strike+"스트라이크");
-            // TODO 시스템 종료, 시스템 재시작
+            System.exit(0);
+            // TODO 시스템 재시작
         }else if (strike == 0 && ball == 0){
             System.out.println("낫싱");
+            gameRound(answerNumberList);
         }else if (strike == 0 && ball != 0){
             System.out.println(ball+"볼");
+            gameRound(answerNumberList);
         }else if (ball == 0 && strike != 0){
             System.out.println(strike+"스트라이크");
+            gameRound(answerNumberList);
         }else{
             System.out.println(ball+"볼 "+strike+"스트라이크");
+            gameRound(answerNumberList);
         }
     }
+
+    public void gameStart(){
+        final ArrayList<Integer> answerNumberList = GetAnswerNumber();
+        // 게임 라운드 시작
+        gameRound(answerNumberList);
+
+
+    }
+
 
 
 
