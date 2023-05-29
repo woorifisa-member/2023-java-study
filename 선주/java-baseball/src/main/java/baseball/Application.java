@@ -3,6 +3,7 @@ package baseball;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) throws IOException {
@@ -19,9 +20,8 @@ public class Application {
 	    	}
 
 			System.out.printf("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-			isContinue = Integer.parseInt(reader.readLine());
+			isContinue = Integer.parseInt(Console.readLine());
 
 		}
     	

@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.*;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Computer {
 	
 	public static Integer[] computer() {
@@ -9,7 +11,7 @@ public class Computer {
 		Set<Integer> setNumber = new HashSet<>();
 		
 		while(setNumber.size() < 3) {
-			int number = new Random().nextInt(9) + 1;
+			int number = Randoms.pickNumberInRange(1, 9);
 			setNumber.add(number);
 		}
 		
