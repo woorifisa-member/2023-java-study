@@ -15,115 +15,93 @@ public class Game {
     private final static int MAX_NUM = 9;
     private final static int MAX_NUM_SIZE = 3;
     private final static String inputMessage = "숫자를 입력해주세요 : ";
-
     ArrayList<Integer> answerNumberList = new ArrayList<Integer>();
 
     public ArrayList<Integer> GetAnswerNumber() {
-        while (answerNumberList.size() < MAX_NUM_SIZE){
+        while (answerNumberList.size() < MAX_NUM_SIZE) {
             isInAnswerList(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM));
         }
         return answerNumberList;
     }
-    public void isInAnswerList(int number){
+
+    public void isInAnswerList(int number) {
         if (answerNumberList.contains(number)) {
 
-        }else{
+        } else {
             answerNumberList.add(number);
         }
     }
-
-    public void gameRound(ArrayList<Integer> answerNumberList){
+    Boolean flag = false;
+    public void gameRound(ArrayList<Integer> answerNumberList) {
+        ArrayList<Integer> answerNumberList1 = answerNumberList;
         System.out.print(inputMessage);
         String tmp = Console.readLine();
-        // 문자 입력 예외처리
-        try{
-            int input = Integer.parseInt(tmp);
-        }catch(IllegalArgumentException e){
-            System.out.println("에러 메시지 : 문자는 입력할 수 없습니다.");
-            System.exit(0);
+        int input = Integer.parseInt(tmp);
+        if ((int) (Math.log10(input) + 1) != 3) {
+            throw new IllegalArgumentException();
+        }
+        int[] inputIntArray = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
+        Integer[] inputIntegerArray = Arrays.stream(inputIntArray).boxed().toArray(Integer[]::new);
+        Set<Integer> inputSet = new HashSet<Integer>(Arrays.asList(inputIntegerArray));
+
+        // 세자릿수가 아닌 경우 예외처리
+        if ((int) (Math.log10(input) + 1) != 3) {
+            throw new IllegalArgumentException();
         }
 
-        try{
-            int input = Integer.parseInt(tmp);
-            // 세자릿수가 아닌 경우 예외처리
-            if ((int)(Math.log10(input)+1) != 3){
-                throw new IllegalArgumentException("세자릿수만 입력 가능합니다.");
-            }
-            // 중복된 숫자가 있는 경우 예외처리
-            int[] inputIntArray = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
-            Integer[] inputIntegerArray = Arrays.stream(inputIntArray).boxed().toArray(Integer[]::new);
-            Set<Integer> inputSet = new HashSet<Integer>(Arrays.asList(inputIntegerArray));
-            if (inputSet.size() < 3){
-                throw new IllegalArgumentException("중복된 값을 입력할 수 없습니다.");
-            }
-        }catch(IllegalArgumentException e){
-            System.out.println("에러 메세지 : " + e.getMessage());
-            System.exit(0);
-        }
-        int input = Integer.parseInt(tmp);
-        int[] inputIntArray = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
+        // 입력값에 따른 strike, ball 카운팅
         int strike = 0;
         int ball = 0;
-        for (int i=0; i<answerNumberList.size(); i++){
-            for (int j=0; j<inputIntArray.length; j++){
-                if ((i == j) && (answerNumberList.get(i) == inputIntArray[j])) {
+        for (int i = 0; i < answerNumberList1.size(); i++) {
+            for (int j = 0; j < inputIntArray.length; j++) {
+                if ((i == j) && (answerNumberList1.get(i) == inputIntArray[j])) {
                     strike += 1;
-                }else if (answerNumberList.get(i) == inputIntArray[j]){
+                } else if (answerNumberList1.get(i) == inputIntArray[j]) {
                     ball += 1;
                 }
             }
         }
 
-        if (strike == 3){
-            System.out.println(strike+"스트라이크");
+        // 입력에 따른 결과 출력
+        if (strike == 3) {
+            System.out.println(strike + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return;
-        }else if (strike == 0 && ball == 0){
+        } else if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
-            gameRound(answerNumberList);
-        }else if (strike == 0 && ball != 0){
-            System.out.println(ball+"볼");
-            gameRound(answerNumberList);
-        }else if (ball == 0 && strike != 0){
-            System.out.println(strike+"스트라이크");
-            gameRound(answerNumberList);
-        }else{
-            System.out.println(ball+"볼 "+strike+"스트라이크");
-            gameRound(answerNumberList);
+            gameRound(answerNumberList1);
+        } else if (strike == 0 && ball != 0) {
+            System.out.println(ball + "볼");
+            gameRound(answerNumberList1);
+        } else if (ball == 0 && strike != 0) {
+            System.out.println(strike + "스트라이크");
+            gameRound(answerNumberList1);
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+            gameRound(answerNumberList1);
         }
     }
 
-    public void gameStart(){
-        final ArrayList<Integer> answerNumberList = GetAnswerNumber();
+    public void gameStart() {
+        ArrayList<Integer> answerNumberList = GetAnswerNumber();
         // 게임 라운드 시작
+        Boolean flag = false;
         gameRound(answerNumberList);
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String stringIsRestart = Console.readLine();
-        int isRestart = Integer.parseInt(stringIsRestart);
-        if (isRestart == 1){
-            gameRound(answerNumberList);
-        }else{
-            System.exit(0);
+        while(true){
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String stringIsRestart = Console.readLine();
+            int isRestart = Integer.parseInt(stringIsRestart);
+            if (isRestart == 1) {
+                answerNumberList.clear();
+                ArrayList<Integer> newAnswerNumberList = GetAnswerNumber();
+                gameRound(newAnswerNumberList);
+            } else {
+                System.out.println("게임 종료");
+                return;
+            }
         }
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
