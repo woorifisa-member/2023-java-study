@@ -1,18 +1,20 @@
 package Number;
-import java.util.Random;
-public class Computer {
-    private int[] computerNumbers = new int[3];
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashSet;
+import java.util.Set;
 
-    public int[] computer() {
-        Random random = new Random();
-        for (int i = 0; i < 3; i++) {
-            computerNumbers[i] = random.nextInt(9) + 1;
-            for (int j = 0; j < i; j++) {
-                if (computerNumbers[i] == computerNumbers[j]) {
-                    i--;
-                }
+public class Computer {
+    private static int[] computerNumbers = new int[3];
+
+    public static int[] computer() {
+        Set<Integer> generatedNumbers = new HashSet<>();
+        for (int i = 0; i < 3; ) {
+            int number = Randoms.pickNumberInRange(1, 9);
+            if (!generatedNumbers.contains(number)) {
+                computerNumbers[i] = number;
+                generatedNumbers.add(number);
+                i++;
             }
-            System.out.println(computerNumbers[i]);
         }
         return computerNumbers;
     }
