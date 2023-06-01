@@ -5,6 +5,7 @@ import java.util.List;
 public class BaseBallNumberValidator {
     public int ball;
     public int strike;
+    public StringBuilder stringBuilder = new StringBuilder();
 
     public boolean checkInningResult(List<Integer> aiNumberList, List<Integer> personNumberList) {
 
@@ -16,24 +17,26 @@ public class BaseBallNumberValidator {
             }
         }
 
+        boolean isStrike = true;
         if (strike != 3) {
             if (ball > 0) {
-                System.out.print(ball + "볼 ");
+                stringBuilder.append(ball + "볼 ");
             }
             if (strike > 0) {
-                System.out.print(strike + "스트라이크");
+                stringBuilder.append(strike + "스트라이크");
             }
             if (ball > 0 || strike > 0) {
-                System.out.println();
+                stringBuilder.append("\n");
             }
             if (ball == 0 && strike == 0) {
-                System.out.println("낫싱");
+                stringBuilder.append("낫싱");
             }
-            initInningCount();
-            return false;
+            System.out.println(stringBuilder.toString());
+            isStrike = false;
         }
+
         initInningCount();
-        return true;
+        return isStrike;
     }
 
     public void initInningCount() {

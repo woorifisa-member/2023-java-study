@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static java.lang.Integer.parseInt;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.IntStream.range;
+
 public class Person {
     private List<Integer> numberList = new ArrayList<>();
     private InputValidator inputValidator = new InputValidator();
@@ -16,9 +20,9 @@ public class Person {
         inputValidator.checkInputNumber(str);
         numberList.clear();
 
-        numberList = IntStream.range(0, str.length())
-                .mapToObj(i -> Integer.parseInt(String.valueOf(str.charAt(i))))
-                .collect(Collectors.toList());
+        numberList = range(0, str.length())
+                .mapToObj(i -> parseInt(String.valueOf(str.charAt(i))))
+                .collect(toList());
     }
 
     public List<Integer> getNumberList() {

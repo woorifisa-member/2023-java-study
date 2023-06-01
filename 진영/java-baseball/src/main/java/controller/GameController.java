@@ -29,7 +29,7 @@ public class GameController {
     }
 
     public void gameProgress() {
-        computerInit();
+        initComputer();
         while (true) {
             person.saveNumber(inputView.inputNumber());
             List<Integer> personNumberList = person.getNumberList(); //나의 숫자
@@ -44,7 +44,7 @@ public class GameController {
         }
     }
 
-    public void computerInit() {
+    public void initComputer() {
         computer.runGeneratorNumber();
         List<Integer> aiNumberList = computer.getNumberList(); //컴퓨터 숫자
         System.out.println("숫자 야구 게임을 시작합니다.");

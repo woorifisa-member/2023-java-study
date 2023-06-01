@@ -1,7 +1,8 @@
 package utils;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface NumberGenerator {
-    List<Integer> generateNumber();
+    Collection<Integer> generateNumber();
 }
