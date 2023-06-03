@@ -16,7 +16,7 @@ public class Computer {
         }
 
         Integer[] computerNumber = setNumber.toArray(new Integer[setNumber.size()]);
-//		System.out.println(Arrays.toString(computerNumber));
+
         return computerNumber;
 
     }

@@ -11,17 +11,17 @@ public class InputNumber {
 
         if (str.length() != 3) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다");
-        } else {
-
-            int[] userNumber = new int[str.length()];
-
-
-            for (int i = 0; i < str.length(); i++) {
-                userNumber[i] = str.charAt(i) - '0';
-            }
-
-            return userNumber;
         }
+
+        int[] userNumber = new int[str.length()];
+
+
+        for (int i = 0; i < str.length(); i++) {
+            userNumber[i] = str.charAt(i) - '0';
+        }
+
+        return userNumber;
+
 
     }
 

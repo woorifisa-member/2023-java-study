@@ -7,14 +7,13 @@ public class Compare {
 
         int strike = 0;
         int ball = 0;
+        int[] res = new int[2];
 
         for (int i = 0; i < user_number.length; i++) {
             for (int j = 0; j < computer_number.length; j++) {
-                if (i == j && user_number[i] == computer_number[j]) {
-                    strike++;
-                } else if (i != j && user_number[i] == computer_number[j]) {
-                    ball++;
-                }
+                res = strikeOrBall(i, j, user_number, computer_number, strike, ball);
+                strike = res[0];
+                ball = res[1];
             }
 
         }
@@ -33,5 +32,19 @@ public class Compare {
 
         return strike;
 
+    }
+
+    public static int[] strikeOrBall(int i, int j, int[] user_number, Integer[] computer_number, int strike, int ball) {
+        if (i == j && user_number[i] == computer_number[j]) {
+            strike++;
+        } else if (i != j && user_number[i] == computer_number[j]) {
+            ball++;
+        }
+
+        int[] res = new int[2];
+        res[0] = strike;
+        res[1] = ball;
+
+        return res;
     }
 }
