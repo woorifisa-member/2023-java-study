@@ -1,4 +1,4 @@
-package main.java.lotto.domain;
+package lotto.domain;
 
 public class WinLotto {
 

@@ -1,4 +1,4 @@
-package main.java.lotto.console;
+package lotto.console;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package main.java.lotto;
+package lotto;
 
 import java.util.List;
 import lotto.console.Controller;

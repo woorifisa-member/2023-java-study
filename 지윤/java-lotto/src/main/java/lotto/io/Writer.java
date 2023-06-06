@@ -1,4 +1,4 @@
-package main.java.lotto.io;
+package lotto.io;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

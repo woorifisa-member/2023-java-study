@@ -1,4 +1,4 @@
-package main.java.lotto.service;
+package lotto.service;
 
 import lotto.domain.IssuedLotto;
 import lotto.domain.WinLotto;
