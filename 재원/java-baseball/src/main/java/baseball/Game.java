@@ -1,6 +1,7 @@
 package baseball;
 import java.util.ArrayList;
-
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
@@ -9,7 +10,7 @@ public class Game {
         ArrayList<Integer> arr = makeRandomNumber();
         while (isNotFinshed){
             System.out.print("숫자를 입력해주세요 : ");
-            String userAnswer = camp.nextstep.edu.missionutils.Console.readLine();
+            String userAnswer = Console.readLine();
             if(userAnswer.length() !=3){
                 throw new IllegalArgumentException("3개의 숫자를 입력해주세요");
             }
@@ -32,7 +33,7 @@ public class Game {
             if(result[0] == 3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String reGame = camp.nextstep.edu.missionutils.Console.readLine();
+                String reGame = Console.readLine();
                 if(reGame.charAt(0)=='1'){
                     playGame();
                 }
@@ -42,10 +43,10 @@ public class Game {
             }
         }
     }
-    public static ArrayList<Integer> makeRandomNumber() throws IllegalArgumentException{
-        int firstNumber = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(1,9);
-        int secondNumber = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(1,9);
-        int thirdNumber = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(1,9);
+    public static ArrayList<Integer> makeRandomNumber() {
+        int firstNumber = Randoms.pickNumberInRange(1,9);
+        int secondNumber = Randoms.pickNumberInRange(1,9);
+        int thirdNumber = Randoms.pickNumberInRange(1,9);
 
         ArrayList<Integer> arr = new ArrayList<>();
 
@@ -55,7 +56,7 @@ public class Game {
 
         return arr;
     }
-    public static Integer[] checkNumber(ArrayList<Integer> arr,String userAnswer) throws IllegalArgumentException {
+    public static Integer[] checkNumber(ArrayList<Integer> arr,String userAnswer)  {
         int strike = 0;
         int ball =0;
         for(int i =0; i < userAnswer.length(); i++){
