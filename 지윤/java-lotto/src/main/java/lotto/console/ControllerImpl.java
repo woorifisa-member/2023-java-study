@@ -32,6 +32,7 @@ public class ControllerImpl implements Controller {
 
     @Override
     public int getBonusNumber() {
-        return 0;
+        Writer.print("보너스번호 1개를 입력해주세요 : ");
+        return Integer.parseInt(Console.readLine());
     }
 }
