@@ -7,14 +7,14 @@ public class Game {
 
     public void playGame () {
         boolean isNotFinshed = true;
-        ArrayList<Integer> arr = makeRandomNumber();
+        ArrayList<Integer> randomNumberArr = makeRandomNumber();
         while (isNotFinshed){
             System.out.print("숫자를 입력해주세요 : ");
             String userAnswer = Console.readLine();
             if(userAnswer.length() !=3){
                 throw new IllegalArgumentException("3개의 숫자를 입력해주세요");
             }
-            int[] result = checkNumber(arr,userAnswer);
+            int[] result = checkNumber(randomNumberArr,userAnswer);
             if (result[0] !=0 && result[1] ==0){
                 System.out.printf("%d스트라이크",result[0]);
                 System.out.println();
@@ -44,27 +44,27 @@ public class Game {
         }
     }
     public static ArrayList<Integer> makeRandomNumber() {
-        ArrayList<Integer> arr = new ArrayList<>();
+        ArrayList<Integer> randomNumberArr = new ArrayList<>();
 
-        while(arr.size() <3){
+        while(randomNumberArr.size() <3){
             int number = Randoms.pickNumberInRange(1,9);
-            if(!arr.contains(number)){
-                arr.add(number);
+            if(!randomNumberArr.contains(number)){
+                randomNumberArr.add(number);
             }
 
         }
-        return arr;
+        return randomNumberArr;
     }
-    public static int[] checkNumber(ArrayList<Integer> arr,String userAnswer)  {
+    public static int[] checkNumber(ArrayList<Integer> randomNumberArr,String userAnswer)  {
         int[] result = new int[2];
         for(int i =0; i < userAnswer.length(); i++){
-            checkSB(arr,userAnswer,result,i);
+            checkSB(randomNumberArr,userAnswer,result,i);
         }
         return result;
     }
-    public static void checkSB(ArrayList<Integer> arr,String userAnswer, int[] result,int i){
-        if(arr.contains((int)userAnswer.charAt(i)-'0')){
-            if((int)userAnswer.charAt(i)-'0' == arr.get(i)){
+    public static void checkSB(ArrayList<Integer> randomNumberArr,String userAnswer, int[] result,int i){
+        if(randomNumberArr.contains((int)userAnswer.charAt(i)-'0')){
+            if((int)userAnswer.charAt(i)-'0' == randomNumberArr.get(i)){
                 result[0] += 1;
             }
             else{
