@@ -24,6 +24,10 @@ public class LottoIssueServiceImpl implements LottoIssueService {
         for (int i = 0; i < price; i++) {
             Lotto lotto = createLotto();
             listOfLotto.add(lotto);
+        }
+        // 로또를 출력해준다.
+        Writer.println(price + "개를 구매했습니다.");
+        for (Lotto lotto : listOfLotto) {
             Writer.println(lotto.getNumbers());
         }
         // 발행한 로또 리스트는 IssuedLotto 객체를 생성해서 넣어준다.
