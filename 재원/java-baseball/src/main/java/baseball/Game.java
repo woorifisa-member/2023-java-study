@@ -11,24 +11,24 @@ public class Game {
         while (isNotFinshed){
             System.out.print("숫자를 입력해주세요 : ");
             String userAnswer = Console.readLine();
+            if(userAnswer.charAt(0) == userAnswer.charAt(1) || userAnswer.charAt(0) == userAnswer.charAt(2) || userAnswer.charAt(1) == userAnswer.charAt(2)){
+                throw new IllegalArgumentException("중복된 숫자를 입력하지 말아주세요");
+            }
             if(userAnswer.length() !=3){
                 throw new IllegalArgumentException("3개의 숫자를 입력해주세요");
             }
             int[] result = checkNumber(randomNumberArr,userAnswer);
             if (result[0] !=0 && result[1] ==0){
-                System.out.printf("%d스트라이크",result[0]);
-                System.out.println();
+                System.out.printf("%d스트라이크\n",result[0]);
             }
             else if(result[0] ==0 && result[1] !=0){
-                System.out.printf("%d볼",result[1]);
-                System.out.println();
+                System.out.printf("%d볼\n",result[1]);
             }
             else if(result[0] ==0 && result[1] ==0){
                 System.out.println("낫싱");
             }
             else{
-                System.out.printf("%d볼 %d스트라이크",result[1],result[0]);
-                System.out.println();
+                System.out.printf("%d볼 %d스트라이크\n",result[1],result[0]);
             }
             if(result[0] == 3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
