@@ -22,6 +22,7 @@ public class ControllerImpl implements Controller {
         List<Integer> winNumbers = new ArrayList<>();
         Writer.print("당첨 로또 번호 6개를(1~45) 쉼표로 구분하여 입력해주세요 : ");
         String inputNumbers = Console.readLine();
+        Validator.validateInputWinNumber(inputNumbers);
         for(String num : inputNumbers.split(",")) {
             int parsedNum = Integer.parseInt(num);
             winNumbers.add(parsedNum);
