@@ -6,6 +6,7 @@ import lotto.console.ControllerImpl;
 import lotto.domain.IssuedLotto;
 import lotto.domain.WinLotto;
 import lotto.service.LottoIssueService;
+import lotto.service.LottoIssueServiceImpl;
 import lotto.service.StatisticsService;
 
 public class LottoGame {
@@ -17,7 +18,7 @@ public class LottoGame {
     private LottoGame() {
         // TODO
         controller = new ControllerImpl();
-        lottoIssueService = null;
+        lottoIssueService = new LottoIssueServiceImpl();
         statisticsService = null;
     }
 
@@ -39,10 +40,7 @@ public class LottoGame {
 
     private IssuedLotto issueLotto() {
         long price = controller.getPrice();
-
-        IssuedLotto issuedLotto = lottoIssueService.issueLotto(price);
-
-        return null;
+        return  lottoIssueService.issueLotto(price);
     }
 
     private WinLotto issueWinLotto() {
