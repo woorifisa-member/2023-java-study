@@ -4,12 +4,15 @@ import java.util.ArrayList;
 
 public class Game {
 
-    public static void playGame () throws IllegalArgumentException{
+    public void playGame () {
         boolean isNotFinshed = true;
         ArrayList<Integer> arr = makeRandomNumber();
         while (isNotFinshed){
             System.out.print("숫자를 입력해주세요 : ");
             String userAnswer = camp.nextstep.edu.missionutils.Console.readLine();
+            if(userAnswer.length() !=3){
+                throw new IllegalArgumentException("3개의 숫자를 입력해주세요");
+            }
             Integer[] result = checkNumber(arr,userAnswer);
             if (result[0] !=0 && result[1] ==0){
                 System.out.printf("%d스트라이크",result[0]);
