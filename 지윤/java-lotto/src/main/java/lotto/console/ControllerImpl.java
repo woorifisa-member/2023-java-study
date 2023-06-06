@@ -33,6 +33,8 @@ public class ControllerImpl implements Controller {
     @Override
     public int getBonusNumber() {
         Writer.print("보너스번호 1개를 입력해주세요 : ");
-        return Integer.parseInt(Console.readLine());
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        Validator.validateRangeOfNumbers(bonusNumber);
+        return bonusNumber;
     }
 }
