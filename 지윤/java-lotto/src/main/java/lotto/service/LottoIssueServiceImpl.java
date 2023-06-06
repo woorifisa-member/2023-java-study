@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.IssuedLotto;
 import lotto.domain.Lotto;
 import lotto.domain.WinLotto;
+import lotto.io.Writer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +24,10 @@ public class LottoIssueServiceImpl implements LottoIssueService {
         for (int i = 0; i < price; i++) {
             Lotto lotto = createLotto();
             listOfLotto.add(lotto);
+            Writer.println(lotto.getNumbers());
         }
         // 발행한 로또 리스트는 IssuedLotto 객체를 생성해서 넣어준다.
-        IssuedLotto issuedLotto = new IssuedLotto(listOfLotto);
-        return issuedLotto;
+        return new IssuedLotto(listOfLotto);
     }
 
     @Override
