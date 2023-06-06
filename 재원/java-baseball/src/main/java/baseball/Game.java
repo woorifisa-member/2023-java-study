@@ -14,7 +14,7 @@ public class Game {
             if(userAnswer.length() !=3){
                 throw new IllegalArgumentException("3개의 숫자를 입력해주세요");
             }
-            Integer[] result = checkNumber(arr,userAnswer);
+            int[] result = checkNumber(arr,userAnswer);
             if (result[0] !=0 && result[1] ==0){
                 System.out.printf("%d스트라이크",result[0]);
                 System.out.println();
@@ -44,33 +44,33 @@ public class Game {
         }
     }
     public static ArrayList<Integer> makeRandomNumber() {
-        int firstNumber = Randoms.pickNumberInRange(1,9);
-        int secondNumber = Randoms.pickNumberInRange(1,9);
-        int thirdNumber = Randoms.pickNumberInRange(1,9);
-
         ArrayList<Integer> arr = new ArrayList<>();
 
-        arr.add(firstNumber);
-        arr.add(secondNumber);
-        arr.add(thirdNumber);
+        while(arr.size() <3){
+            int number = Randoms.pickNumberInRange(1,9);
+            if(!arr.contains(number)){
+                arr.add(number);
+            }
 
+        }
         return arr;
     }
-    public static Integer[] checkNumber(ArrayList<Integer> arr,String userAnswer)  {
-        int strike = 0;
-        int ball =0;
+    public static int[] checkNumber(ArrayList<Integer> arr,String userAnswer)  {
+        int[] result = new int[2];
         for(int i =0; i < userAnswer.length(); i++){
-            if(arr.contains((int)userAnswer.charAt(i)-'0')){
-                if((int)userAnswer.charAt(i)-'0' == arr.get(i)){
-                    strike += 1;
-                }
-                else{
-                    ball += 1;
-                }
+            checkSB(arr,userAnswer,result,i);
+        }
+        return result;
+    }
+    public static void checkSB(ArrayList<Integer> arr,String userAnswer, int[] result,int i){
+        if(arr.contains((int)userAnswer.charAt(i)-'0')){
+            if((int)userAnswer.charAt(i)-'0' == arr.get(i)){
+                result[0] += 1;
+            }
+            else{
+                result[1] += 1;
             }
         }
-        Integer[] result = {strike,ball};
-        return result;
     }
 
 }
