@@ -1,16 +1,17 @@
 package lotto;
 
 import java.util.List;
+
 import lotto.console.Controller;
 import lotto.console.ControllerImpl;
 import lotto.domain.IssuedLotto;
 import lotto.domain.WinLotto;
+import lotto.io.Writer;
 import lotto.service.LottoIssueService;
 import lotto.service.LottoIssueServiceImpl;
 import lotto.service.StatisticsService;
 
 public class LottoGame {
-
     private final Controller controller;
     private final LottoIssueService lottoIssueService;
     private final StatisticsService statisticsService;
@@ -24,11 +25,10 @@ public class LottoGame {
 
     public static void run() {
         LottoGame lottoGame = new LottoGame();
-
         try {
             lottoGame.start();
         } catch (IllegalArgumentException e) {
-
+            Writer.println("[ERROR] " + e.getMessage());
         }
     }
 

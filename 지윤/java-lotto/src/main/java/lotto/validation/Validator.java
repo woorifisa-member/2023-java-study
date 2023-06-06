@@ -19,7 +19,7 @@ public final class Validator {
 
     public static void validateInputPrice(long price) {
         if(price % Lotto.PRICE != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("금액은 천원단위로 입력해주세요.");
         }
     }
 
