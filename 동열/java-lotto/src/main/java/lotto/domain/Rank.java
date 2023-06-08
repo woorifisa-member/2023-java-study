@@ -1,5 +1,10 @@
 package lotto.domain;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.TreeMap;
+
 public enum Rank {
 
     // TODO: Emum 활용하기
@@ -17,6 +22,19 @@ public enum Rank {
     Rank(int count, int prizeMoney) {
         this.count = count;
         this.prizeMoney = prizeMoney;
+    }
+
+    public static Map<Rank, Integer> getAllGrades() {
+        Map<Rank, Integer> ranks = new TreeMap<>(Comparator.comparing(Rank::getPrizeMoney));
+
+        Arrays.stream(Rank.values())
+            .forEach(rank -> ranks.put(rank, 0));
+
+        return ranks;
+    }
+
+    public int getPrizeMoney() {
+        return prizeMoney;
     }
 
 }

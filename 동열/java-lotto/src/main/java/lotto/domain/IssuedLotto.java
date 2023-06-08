@@ -21,4 +21,9 @@ public class IssuedLotto {
 
         return sb.toString();
     }
+
+    public List<Lotto> getLotto() {
+        return lotto;
+    }
+
 }
