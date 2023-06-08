@@ -1,6 +1,10 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import lotto.validation.Validator;
 
 public class Lotto {
@@ -17,6 +21,30 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    // TODO: 추가 기능 구현
+    public static Lotto issue() {
+        Set<Integer> set = new HashSet<>();
+
+        while (set.size() < SIZE) {
+            set.add(Randoms.pickNumberInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER));
+        }
+
+        return new Lotto(new ArrayList<>(set));
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+
+        for (int i = 0; i < SIZE; i++) {
+            sb.append(i);
+            if (i != SIZE - 1) {
+                sb.append(", ");
+            }
+        }
+
+        sb.append("]");
+        return sb.toString();
+    }
 
 }

@@ -10,4 +10,15 @@ public class IssuedLotto {
         this.lotto = lotto;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(lotto.size())
+          .append("개를 구매했습니다.\n");
+
+        lotto.forEach(l -> sb.append(l).append("\n"));
+
+        return sb.toString();
+    }
 }

@@ -2,9 +2,12 @@ package lotto;
 
 import java.util.List;
 import lotto.console.Controller;
+import lotto.console.ControllerImpl;
 import lotto.domain.IssuedLotto;
 import lotto.domain.WinLotto;
+import lotto.io.Writer;
 import lotto.service.LottoIssueService;
+import lotto.service.LottoIssueServiceImpl;
 import lotto.service.StatisticsService;
 
 public class LottoGame {
@@ -15,8 +18,8 @@ public class LottoGame {
 
     private LottoGame() {
         // TODO
-        controller = null;
-        lottoIssueService = null;
+        controller = new ControllerImpl();
+        lottoIssueService = new LottoIssueServiceImpl();
         statisticsService = null;
     }
 
@@ -26,22 +29,23 @@ public class LottoGame {
         try {
             lottoGame.start();
         } catch (IllegalArgumentException e) {
-
+            Writer.println(e.getMessage());
         }
     }
 
     private void start() {
+        Writer.println("구입 금액을 입력해주세요.");
         IssuedLotto issuedLotto = issueLotto();
+
+        Writer.println("");
+
+        Writer.println("당첨 번호를 입력해주세요.");
         WinLotto winLotto = issueWinLotto();
         compileStatistics(issuedLotto, winLotto);
     }
 
     private IssuedLotto issueLotto() {
-        long price = controller.getPrice();
-
-        IssuedLotto issuedLotto = lottoIssueService.issueLotto(price);
-
-        return null;
+        return lottoIssueService.issueLotto(controller.getPrice());
     }
 
     private WinLotto issueWinLotto() {
