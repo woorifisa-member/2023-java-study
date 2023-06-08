@@ -36,6 +36,7 @@ public class LottoIssueServiceImpl implements LottoIssueService {
 
     @Override
     public WinLotto issueWinLotto(List<Integer> numbers, int bonusNumber) {
-        return null;
+        Lotto winlotto = new Lotto(numbers);
+        return new WinLotto(winlotto, bonusNumber);
     }
 }
