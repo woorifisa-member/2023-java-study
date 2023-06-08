@@ -1,7 +1,10 @@
 package lotto.validation;
 
 import lotto.domain.Lotto;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public final class Validator {
 
@@ -24,13 +27,19 @@ public final class Validator {
 
     public static void validateInputWinNumber(String inputNumbers) {
         String[] inputArr = inputNumbers.split(",");
+        Set<Integer> checkSet = new HashSet<>();
         if (inputArr.length != 6) {
             throw new IllegalArgumentException("숫자 6개를 쉽표로 구분지어 입력해주세요.");
         }
         for (String input : inputArr) {
             int parsedIntInput = Integer.parseInt(input);
+            checkSet.add(parsedIntInput);
             validateRangeOfNumbers(parsedIntInput);
         }
+        if (checkSet.size() != 6) {
+            throw new IllegalArgumentException("중복되지 않은 숫자 6개를 입력해주세요");
+        }
+
     }
 
     public static void validateInputBonusNumber(int bonusNumber, List<Integer> winLotto) {
