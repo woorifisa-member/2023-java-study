@@ -23,6 +23,6 @@ public interface Controller {
      *
      * @return 보너스 번호
      */
-    int getBonusNumber();
+    int getBonusNumber(List<Integer> winNumber);
 
 }

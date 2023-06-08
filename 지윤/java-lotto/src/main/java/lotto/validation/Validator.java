@@ -1,7 +1,6 @@
 package lotto.validation;
 
 import lotto.domain.Lotto;
-
 import java.util.List;
 
 public final class Validator {
@@ -34,10 +33,21 @@ public final class Validator {
         }
     }
 
+    public static void validateInputBonusNumber(int bonusNumber, List<Integer> winLotto) {
+        validateRangeOfNumbers(bonusNumber);
+        for (int winNum : winLotto) {
+            if (winNum == bonusNumber) {
+                throw new IllegalArgumentException("해당 숫자는 이미 당첨번호에 있습니다. 당첨번호에 없는 번호를 넣어주세요.");
+            }
+        }
+    }
+
+
     public static void validateRangeOfNumbers(int number) {
         if (!(number >= Lotto.MIN_LOTTO_NUMBER && number <= Lotto.MAX_LOTTO_NUMBER)) {
             throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
+
 
 }
