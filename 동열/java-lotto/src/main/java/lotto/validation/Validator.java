@@ -9,6 +9,7 @@ import lotto.domain.Lotto;
 public final class Validator {
 
     public static final String ERROR = "[ERROR] ";
+    public static final String ERROR_MESSAGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
 
     private Validator() {
 
@@ -35,12 +36,31 @@ public final class Validator {
         try {
 
             return Arrays.stream(nums)
-                         .map(n -> Integer.parseInt(n.trim()))
+                         .map(n -> checkNumber(Integer.parseInt(n.trim())))
                          .collect(toList());
 
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ERROR + "잘못된 당첨번호를 입력했습니다.");
+            throw new IllegalArgumentException(ERROR + ERROR_MESSAGE);
         }
+    }
+
+    public static int validBonusNumberInput(String number) {
+        try {
+
+            int bonusNumber = Integer.parseInt(number);
+
+            return checkNumber(bonusNumber);
+
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR + ERROR_MESSAGE);
+        }
+    }
+
+    private static int checkNumber(int number) {
+        if (number < Lotto.MIN_LOTTO_NUMBER || Lotto.MAX_LOTTO_NUMBER < number) {
+            throw new IllegalArgumentException(ERROR + ERROR_MESSAGE);
+        }
+        return number;
     }
 
 }

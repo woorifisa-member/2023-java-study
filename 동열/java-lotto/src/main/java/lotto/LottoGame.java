@@ -34,31 +34,31 @@ public class LottoGame {
     }
 
     private void start() {
-        Writer.println("구입 금액을 입력해주세요.");
         IssuedLotto issuedLotto = issueLotto();
 
         Writer.println("");
 
-        Writer.println("당첨 번호를 입력해주세요.");
         WinLotto winLotto = issueWinLotto();
         compileStatistics(issuedLotto, winLotto);
     }
 
     private IssuedLotto issueLotto() {
+        Writer.println("구입 금액을 입력해주세요.");
         return lottoIssueService.issueLotto(controller.getPrice());
     }
 
     private WinLotto issueWinLotto() {
+        Writer.println("당첨 번호를 입력해주세요.");
         List<Integer> numbers = controller.getWinNumber();
+
+        Writer.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = controller.getBonusNumber();
 
-        WinLotto winLotto = lottoIssueService.issueWinLotto(numbers, bonusNumber);
-
-        return null;
+        return lottoIssueService.issueWinLotto(numbers, bonusNumber);
     }
 
     private void compileStatistics(IssuedLotto issuedLotto, WinLotto winLotto) {
-        statisticsService.compileStatistics(null, null);
+        statisticsService.compileStatistics(issuedLotto, winLotto);
     }
 
 }

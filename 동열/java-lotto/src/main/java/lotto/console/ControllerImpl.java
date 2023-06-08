@@ -18,7 +18,7 @@ public class ControllerImpl implements Controller {
 
     @Override
     public int getBonusNumber() {
-        return 0;
+        return Validator.validBonusNumberInput(Console.readLine());
     }
 
 }
