@@ -1,13 +1,16 @@
 package lotto.service;
 
-import java.util.List;
 import lotto.domain.IssuedLotto;
 import lotto.domain.WinLotto;
 
-public interface LottoIssueService {
+import java.util.List;
 
-    IssuedLotto issueLotto(long price);
+public class LottoIssueService {
+    IssuedLotto issueLotto(long price){
+        return null;
+    }
 
-    WinLotto issueWinLotto(List<Integer> numbers, int bonusNumber);
-
+    WinLotto issueWinLotto(List<Integer> numbers, int bonusNumber){
+        return null;
+    }
 }
