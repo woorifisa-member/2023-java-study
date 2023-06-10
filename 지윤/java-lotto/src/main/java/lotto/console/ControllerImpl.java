@@ -1,7 +1,6 @@
 package lotto.console;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Lotto;
 import lotto.io.Writer;
 import lotto.validation.Validator;
 
@@ -14,7 +13,7 @@ public class ControllerImpl implements Controller {
         Writer.print("발행할 로또의 금액을 1000원 단위로 입력해주세요 : ");
         long price = Long.parseLong(Console.readLine());
         Validator.validateInputPrice(price);
-        return price / Lotto.PRICE;
+        return price;
     }
 
     @Override
