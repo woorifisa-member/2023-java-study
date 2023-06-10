@@ -17,7 +17,7 @@ public class CheckLottoService {
         for (Rank rank : Rank.values()) {
             int count = rank.getCount();
             int prize = rank.getPrizeMoney();
-            Writer.print(LottoResult.formatResult(count, prize, LottoResult.getResult()[rank.ordinal()]));
+            Writer.println(LottoResult.formatResult(count, prize, rank));
         }
     }
 
