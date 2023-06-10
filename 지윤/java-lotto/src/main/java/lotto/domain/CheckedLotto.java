@@ -8,7 +8,7 @@ public class CheckedLotto {
         for (Lotto lotto : issuedLotto.getLotto()) {
             int matchCount = compareNumbers(lotto, winLotto);
             boolean isBonusNumber = checkBonusNumber(lotto, winLotto.getBonusNumber());
-            LottoResult.getRank(matchCount, isBonusNumber);
+            LottoResult.calculateResult(matchCount, isBonusNumber);
         }
     }
 
