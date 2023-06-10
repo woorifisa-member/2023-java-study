@@ -25,7 +25,12 @@ public class LottoResult {
         return result;
     }
 
-    public static String formatResult(int count, int prize, int result) {
-        return String.format("%d개 일치 (%,d원) - %d%n", count, prize, result);
+    public static String formatResult(int count, int prize, Rank rank) {
+
+        if (rank.name().equals("SECOND")) {
+            return String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", count, prize, getResult()[rank.ordinal()]);
+        }
+
+        return String.format("%d개 일치 (%,d원) - %d개", count, prize, getResult()[rank.ordinal()]);
     }
 }
