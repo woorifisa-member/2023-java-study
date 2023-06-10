@@ -10,4 +10,7 @@ public class IssuedLotto {
         this.lotto = lotto;
     }
 
+    public List<Lotto> getLotto() {
+        return lotto;
+    }
 }
