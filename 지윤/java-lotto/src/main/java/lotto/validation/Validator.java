@@ -14,15 +14,25 @@ public final class Validator {
 
     // TODO: 여러 검증 로직을 짜보세요
     public static void validateLottoLength(List<Integer> numbers) {
+        Set<Integer> checkSet = new HashSet<>(numbers);
+        if (checkSet.size() != 6) {
+            throw new IllegalArgumentException("중복되지 않은 숫자 6개를 입력해주세요");
+        }
+
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void validateInputPrice(long price) {
-        if (price % Lotto.PRICE != 0) {
+    public static void validateInputPrice(String price) {
+        boolean isNumeric = price.matches("^[0-9]*?");
+        if (Long.parseLong(price) % Lotto.PRICE != 0) {
             throw new IllegalArgumentException("금액은 천원단위로 입력해주세요.");
         }
+        if(!isNumeric) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
+
     }
 
     public static void validateInputWinNumber(String inputNumbers) {
@@ -35,6 +45,7 @@ public final class Validator {
             int parsedIntInput = Integer.parseInt(input);
             checkSet.add(parsedIntInput);
             validateRangeOfNumbers(parsedIntInput);
+
         }
         if (checkSet.size() != 6) {
             throw new IllegalArgumentException("중복되지 않은 숫자 6개를 입력해주세요");
