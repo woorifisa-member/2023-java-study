@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.StringJoiner;
+
 import lotto.validation.Validator;
 
 public class Lotto {
@@ -13,10 +15,18 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        Validator.validateLottoLength(numbers);
+        validate(numbers);
         this.numbers = numbers;
     }
-
-    // TODO: 추가 기능 구현
-
+    private void validate(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+    public String getNumString(){
+        StringJoiner joiner = new StringJoiner(", ");
+        numbers.stream().map(String::valueOf)
+                .forEach(joiner::add);
+        return String.join("","[",joiner.toString(),"]");
+    }
 }
