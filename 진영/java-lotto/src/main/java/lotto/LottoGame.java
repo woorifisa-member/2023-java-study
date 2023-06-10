@@ -1,6 +1,8 @@
 package lotto;
 
 import lotto.controller.LottoController;
+import lotto.domain.IssuedLotto;
+import lotto.domain.WinLotto;
 
 public class LottoGame {
 
@@ -13,7 +15,8 @@ public class LottoGame {
 
     public static void run() {
         LottoGame lottoGame = new LottoGame();
-        lottoGame.lottoController.startGame();
+        IssuedLotto issuedLotto = lottoGame.lottoController.purchaseLotto();
+        WinLotto winLotto = lottoGame.lottoController.setWinLotto();
     }
 
 }
