@@ -19,4 +19,11 @@ public enum Rank {
         this.prizeMoney = prizeMoney;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
 }

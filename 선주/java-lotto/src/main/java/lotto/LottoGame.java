@@ -6,6 +6,7 @@ import lotto.console.HelloControllerImpl;
 import lotto.domain.IssuedLotto;
 import lotto.domain.WinLotto;
 import lotto.service.HelloLottoIssueServiceImpl;
+import lotto.service.HelloStatisticsServiceImpl;
 import lotto.service.LottoIssueService;
 import lotto.service.StatisticsService;
 
@@ -19,7 +20,7 @@ public class LottoGame {
         // TODO
         controller = new HelloControllerImpl();
         lottoIssueService = new HelloLottoIssueServiceImpl();
-        statisticsService = null;
+        statisticsService = new HelloStatisticsServiceImpl();
     }
 
     public static void run() {
@@ -34,8 +35,8 @@ public class LottoGame {
 
     private void start() {
         IssuedLotto issuedLotto = issueLotto();
-//        WinLotto winLotto = issueWinLotto();
-//        compileStatistics(issuedLotto, winLotto);
+        WinLotto winLotto = issueWinLotto();
+        compileStatistics(issuedLotto, winLotto);
     }
 
     private IssuedLotto issueLotto() {
@@ -50,13 +51,11 @@ public class LottoGame {
         List<Integer> numbers = controller.getWinNumber();
         int bonusNumber = controller.getBonusNumber();
 
-        WinLotto winLotto = lottoIssueService.issueWinLotto(numbers, bonusNumber);
-
-        return null;
+        return lottoIssueService.issueWinLotto(numbers, bonusNumber);
     }
 
     private void compileStatistics(IssuedLotto issuedLotto, WinLotto winLotto) {
-        statisticsService.compileStatistics(null, null);
+        statisticsService.compileStatistics(issuedLotto, winLotto);
     }
 
 }

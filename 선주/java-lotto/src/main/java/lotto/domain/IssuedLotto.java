@@ -1,14 +1,14 @@
 package lotto.domain;
 
-import lotto.io.Writer;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.List;
 
 public class IssuedLotto {
 
     private final List<Lotto> lotto;
+
+    public List<Lotto> getLotto() {
+        return lotto;
+    }
 
     public IssuedLotto(List<Lotto> lotto) {
         this.lotto = lotto;

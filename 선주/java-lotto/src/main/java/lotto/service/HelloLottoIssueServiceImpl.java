@@ -14,10 +14,10 @@ public class HelloLottoIssueServiceImpl implements LottoIssueService {
     @Override
     public IssuedLotto issueLotto(long price) {
 
-        int lottos_cnt = (int) (price/1000);
+        int lottosCnt = (int) (price/1000);
         List<Lotto> lottos = new ArrayList<>();
 
-        for (int i = 0; i < lottos_cnt; i++){
+        for (int i = 0; i < lottosCnt; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
@@ -27,7 +27,7 @@ public class HelloLottoIssueServiceImpl implements LottoIssueService {
 
         IssuedLotto issuedLotto = new IssuedLotto(lottos);
 
-        Writer.println(lottos_cnt + "개를 구매했습니다.");
+        Writer.println("\n"+lottosCnt + "개를 구매했습니다.");
         Writer.println(issuedLotto);
 
         return issuedLotto;
@@ -35,6 +35,7 @@ public class HelloLottoIssueServiceImpl implements LottoIssueService {
 
     @Override
     public WinLotto issueWinLotto(List<Integer> numbers, int bonusNumber) {
-        return null;
+        Lotto lotto = new Lotto(numbers);
+        return new WinLotto(lotto, bonusNumber);
     }
 }
