@@ -5,22 +5,26 @@ import java.util.List;
 import lotto.console.Controller;
 import lotto.console.ControllerImpl;
 import lotto.domain.IssuedLotto;
+import lotto.domain.Lotto;
 import lotto.domain.WinLotto;
 import lotto.io.Writer;
-import lotto.service.LottoIssueService;
-import lotto.service.LottoIssueServiceImpl;
-import lotto.service.StatisticsService;
+import lotto.service.*;
 
 public class LottoGame {
     private final Controller controller;
     private final LottoIssueService lottoIssueService;
     private final StatisticsService statisticsService;
+    private final CheckLottoService checkLottoService;
+
+    private long userPrice;
 
     private LottoGame() {
         // TODO
         controller = new ControllerImpl();
         lottoIssueService = new LottoIssueServiceImpl();
-        statisticsService = null;
+        checkLottoService = new CheckLottoService();
+        statisticsService = new StatisticsServiceImpl();
+        userPrice = controller.getPrice();
     }
 
     public static void run() {
@@ -35,25 +39,28 @@ public class LottoGame {
     private void start() {
         IssuedLotto issuedLotto = issueLotto();
         WinLotto winLotto = issueWinLotto();
-        compileStatistics(issuedLotto, winLotto);
+        checkLottoResult(issuedLotto,winLotto);
+        compileStatistics();
     }
 
     private IssuedLotto issueLotto() {
-        long price = controller.getPrice();
-        return  lottoIssueService.issueLotto(price);
+        return  lottoIssueService.issueLotto(userPrice / Lotto.PRICE);
     }
 
     private WinLotto issueWinLotto() {
         List<Integer> numbers = controller.getWinNumber();
-        int bonusNumber = controller.getBonusNumber();
-
-        WinLotto winLotto = lottoIssueService.issueWinLotto(numbers, bonusNumber);
-
-        return null;
+        int bonusNumber = controller.getBonusNumber(numbers);
+        return lottoIssueService.issueWinLotto(numbers, bonusNumber);
     }
 
-    private void compileStatistics(IssuedLotto issuedLotto, WinLotto winLotto) {
-        statisticsService.compileStatistics(null, null);
+    public void checkLottoResult(IssuedLotto issuedLotto, WinLotto winLotto) {
+        checkLottoService.checkIssuedLotto(issuedLotto, winLotto);
+        checkLottoService.printLottoStatus();
+    }
+
+    private void compileStatistics() {
+        statisticsService.compileStatistics(userPrice);
+        Writer.print(statisticsService.toString());
     }
 
 }
