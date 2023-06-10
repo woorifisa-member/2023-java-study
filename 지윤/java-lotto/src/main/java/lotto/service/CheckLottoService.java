@@ -1,8 +1,9 @@
-package lotto.domain;
+package lotto.service;
 
+import lotto.domain.*;
 import lotto.io.Writer;
 
-public class CheckedLotto {
+public class CheckLottoService {
 
     public void checkIssuedLotto(IssuedLotto issuedLotto, WinLotto winLotto) {
         for (Lotto lotto : issuedLotto.getLotto()) {
