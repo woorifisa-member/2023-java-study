@@ -24,7 +24,6 @@ public class LottoGame {
         lottoIssueService = new LottoIssueServiceImpl();
         checkLottoService = new CheckLottoService();
         statisticsService = new StatisticsServiceImpl();
-        userPrice = controller.getPrice();
     }
 
     public static void run() {
@@ -37,9 +36,12 @@ public class LottoGame {
     }
 
     private void start() {
+        userPrice = controller.getPrice();
         IssuedLotto issuedLotto = issueLotto();
         WinLotto winLotto = issueWinLotto();
-        checkLottoResult(issuedLotto,winLotto);
+        checkLottoResult(issuedLotto, winLotto);
+        Writer.println("당첨통계");
+        Writer.println("---");
         compileStatistics();
     }
 
@@ -53,7 +55,7 @@ public class LottoGame {
         return lottoIssueService.issueWinLotto(numbers, bonusNumber);
     }
 
-    public void checkLottoResult(IssuedLotto issuedLotto, WinLotto winLotto) {
+    private void checkLottoResult(IssuedLotto issuedLotto, WinLotto winLotto) {
         checkLottoService.checkIssuedLotto(issuedLotto, winLotto);
         checkLottoService.printLottoStatus();
     }
