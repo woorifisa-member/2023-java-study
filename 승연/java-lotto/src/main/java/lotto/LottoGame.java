@@ -5,6 +5,7 @@ import lotto.console.Controller;
 import lotto.console.UserInput;
 import lotto.domain.IssuedLotto;
 import lotto.domain.WinLotto;
+import lotto.service.IssueLotto;
 import lotto.service.LottoIssueService;
 import lotto.service.StatisticsService;
 
@@ -17,7 +18,7 @@ public class LottoGame {
     public LottoGame() {
         // TODO
         controller = new UserInput();
-        lottoIssueService = null;
+        lottoIssueService = new IssueLotto();
         statisticsService = null;
     }
 
