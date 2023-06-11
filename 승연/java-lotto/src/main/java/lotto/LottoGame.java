@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.List;
 import lotto.console.Controller;
+import lotto.console.UserInput;
 import lotto.domain.IssuedLotto;
 import lotto.domain.WinLotto;
 import lotto.service.LottoIssueService;
@@ -13,9 +14,9 @@ public class LottoGame {
     private final LottoIssueService lottoIssueService;
     private final StatisticsService statisticsService;
 
-    private LottoGame() {
+    public LottoGame() {
         // TODO
-        controller = null;
+        controller = new UserInput();
         lottoIssueService = null;
         statisticsService = null;
     }
