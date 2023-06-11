@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+
 import lotto.console.Controller;
 import lotto.console.UserInput;
 import lotto.domain.IssuedLotto;
@@ -45,13 +46,13 @@ public class LottoGame {
     private IssuedLotto issueLotto() {
         Writer.println("구매금액을 입력해 주세요.");
         long price = controller.getPrice();
-        int numLotto = (int)price/1000;
+        int numLotto = (int) price / 1000;
         Writer.println(" ");
         Writer.print(numLotto);
         Writer.println("개를 구매했습니다.");
 
         IssuedLotto issuedLotto = lottoIssueService.issueLotto(price);
-        for (Lotto oneLotto:issuedLotto.lotto){
+        for (Lotto oneLotto : issuedLotto.lotto) {
             Writer.println(oneLotto.numbers);
         }
         return issuedLotto;

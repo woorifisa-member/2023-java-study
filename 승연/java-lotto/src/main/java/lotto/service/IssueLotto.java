@@ -8,7 +8,7 @@ import lotto.domain.WinLotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IssueLotto implements LottoIssueService{
+public class IssueLotto implements LottoIssueService {
 
     // 로또 랜덤 숫자 생성
     private List<Integer> generateRandomNumbers() {
@@ -23,9 +23,9 @@ public class IssueLotto implements LottoIssueService{
     }
 
     // 구매한 가격만큼 로또 발행
-    public IssuedLotto issueLotto(long price){
+    public IssuedLotto issueLotto(long price) {
         List<Lotto> lottoList = new ArrayList<>();
-        for (int i=0; i<price/1_000; i++){
+        for (int i = 0; i < price / 1_000; i++) {
             Lotto lotto = new Lotto(generateRandomNumbers());
             lottoList.add(lotto);
         }
@@ -33,9 +33,9 @@ public class IssueLotto implements LottoIssueService{
     }
 
 
-    public WinLotto issueWinLotto(List<Integer> numbers, int bonusNumber){
+    public WinLotto issueWinLotto(List<Integer> numbers, int bonusNumber) {
         // (Lotto) 적용 원리 확인
-        WinLotto winLotto = new WinLotto((Lotto)numbers, bonusNumber);
+        WinLotto winLotto = new WinLotto((Lotto) numbers, bonusNumber);
         return winLotto;
     }
 

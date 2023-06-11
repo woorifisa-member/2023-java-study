@@ -6,35 +6,35 @@ import lotto.domain.WinLotto;
 import lotto.io.Writer;
 
 
-public class CompareLotto implements StatisticsService{
+public class CompareLotto implements StatisticsService {
 
     // 당첨 로또와 비교
     // winLotto 에는 numbers, bonusNumber 있음
-    public void compileStatistics(IssuedLotto issuedLotto, WinLotto winLotto){
+    public void compileStatistics(IssuedLotto issuedLotto, WinLotto winLotto) {
         int result[] = new int[5];
-        for (Lotto oneLotto:issuedLotto.lotto){
+        for (Lotto oneLotto : issuedLotto.lotto) {
             int sameCount = 0;
             boolean sameBonus = false;
-            for (int numIssued:oneLotto.numbers){
-                if (numIssued == winLotto.bonusNumber){
+            for (int numIssued : oneLotto.numbers) {
+                if (numIssued == winLotto.bonusNumber) {
                     sameBonus = true;
                 }
                 // winLotto.WinLotto.numbers 구조 확인
-                for (int numWin:winLotto.WinLotto.numbers) {
+                for (int numWin : winLotto.WinLotto.numbers) {
                     if (numIssued == numWin) {
                         sameCount += 1;
                     }
                 }
             }
-            if (sameCount==3){
+            if (sameCount == 3) {
                 result[0] += 1;
-            } else if (sameCount==4) {
+            } else if (sameCount == 4) {
                 result[1] += 1;
-            } else if (sameCount==5 && sameBonus==false) {
+            } else if (sameCount == 5 && sameBonus == false) {
                 result[2] += 1;
-            } else if (sameCount==5 && sameBonus==true) {
+            } else if (sameCount == 5 && sameBonus == true) {
                 result[3] += 1;
-            } else if (sameCount==6) {
+            } else if (sameCount == 6) {
                 result[4] += 1;
             }
         }
@@ -55,7 +55,7 @@ public class CompareLotto implements StatisticsService{
         Writer.println("개");
         Writer.print("총 수익률은 ");
         long earned = 0;
-        earned += (result[0]*5_000 + result[1]*50_000 + result[2]*1_500_000 + result[3]*30_000_000 + result[4]*2_000_000_000);
+        earned += (result[0] * 5_000 + result[1] * 50_000 + result[2] * 1_500_000 + result[3] * 30_000_000 + result[4] * 2_000_000_000);
         // TODO 총 수익률 계산하고 출력 (price 어떻게 가져오지..?)
     }
 
