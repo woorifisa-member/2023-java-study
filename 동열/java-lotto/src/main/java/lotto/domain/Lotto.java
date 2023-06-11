@@ -17,7 +17,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        Validator.validateLottoLength(numbers);
+        Validator.validateLottoNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -29,6 +29,14 @@ public class Lotto {
         }
 
         return new Lotto(new ArrayList<>(set));
+    }
+
+    public static Lotto issue(List<Integer> numbers) {
+        return new Lotto(numbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     @Override

@@ -5,6 +5,7 @@ import lotto.console.Controller;
 import lotto.console.ControllerImpl;
 import lotto.domain.IssuedLotto;
 import lotto.domain.WinLotto;
+import lotto.domain.WinResult;
 import lotto.io.Writer;
 import lotto.service.LottoIssueService;
 import lotto.service.LottoIssueServiceImpl;
@@ -39,12 +40,20 @@ public class LottoGame {
         Writer.println("");
 
         WinLotto winLotto = issueWinLotto();
-        compileStatistics(issuedLotto, winLotto);
+        WinResult winResult = compileStatistics(issuedLotto, winLotto);
+
+        Writer.println(winResult);
     }
 
     private IssuedLotto issueLotto() {
         Writer.println("구입 금액을 입력해주세요.");
-        return lottoIssueService.issueLotto(controller.getPrice());
+        IssuedLotto issuedLotto = lottoIssueService.issueLotto(controller.getPrice());
+
+        Writer.println(String.format("%d개를 구매했습니다.", issuedLotto.getLotto().size()));
+        issuedLotto.getLotto()
+                   .forEach(Writer::println);
+
+        return issuedLotto;
     }
 
     private WinLotto issueWinLotto() {
@@ -57,8 +66,8 @@ public class LottoGame {
         return lottoIssueService.issueWinLotto(numbers, bonusNumber);
     }
 
-    private void compileStatistics(IssuedLotto issuedLotto, WinLotto winLotto) {
-        statisticsService.compileStatistics(issuedLotto, winLotto);
+    private WinResult compileStatistics(IssuedLotto issuedLotto, WinLotto winLotto) {
+        return statisticsService.compileStatistics(issuedLotto, winLotto);
     }
 
 }

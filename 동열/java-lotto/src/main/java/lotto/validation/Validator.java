@@ -3,6 +3,7 @@ package lotto.validation;
 import static java.util.stream.Collectors.toList;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import lotto.domain.Lotto;
 
@@ -16,15 +17,18 @@ public final class Validator {
     }
 
     // TODO: 여러 검증 로직을 짜보세요
-    public static void validateLottoLength(List<Integer> numbers) {
-        if (numbers.size() != Lotto.SIZE) {
+    public static void validateLottoNumber(List<Integer> numbers) {
+        HashSet<Integer> nums = new HashSet<>(numbers);
+        if (nums.size() != Lotto.SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
     public static long validPriceInput(String price) {
         try {
-            return Long.parseLong(price);
+            long price =  Long.parseLong(price);
+            
+            return 
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR + "잘못된 가격을 입력했습니다.");
         }
