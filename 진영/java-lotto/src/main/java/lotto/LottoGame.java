@@ -20,7 +20,6 @@ public class LottoGame {
             WinLotto winLotto = lottoGame.lottoController.setWinLotto();
             lottoGame.lottoController.endGame(issuedLotto,winLotto);
         }catch (IllegalArgumentException e){
-            System.out.println("에러발생");
             System.out.println(e);
         }
 

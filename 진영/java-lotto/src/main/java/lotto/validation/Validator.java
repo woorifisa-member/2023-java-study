@@ -20,7 +20,6 @@ public final class Validator {
     public static void validate(List<Integer> numList, int number){
         validateNumberRange(numList);
         validateNumberRange(number);
-        validateDuplicatedNumber(numList,number);
     }
     public static void validateNumberRange(int num){
             if( num < 1 && 45 < num){
@@ -33,17 +32,6 @@ public final class Validator {
             if( num < 1 && 45 < num){
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
-        }
-    }
-
-    public static void validateDuplicatedNumber(List<Integer> numList, int number){
-        Set<Integer> set = new HashSet<>();
-        for(Integer num : numList){
-            set.add(num);
-        }
-        set.add(number);
-        if(set.size() != 7){
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 중복이 없는 숫자여야 합니다.");
         }
     }
 }
