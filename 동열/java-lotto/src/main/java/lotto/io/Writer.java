@@ -1,15 +1,6 @@
 package lotto.io;
 
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
-
 public final class Writer {
-
-    private static final BufferedWriter bw;
-
-    static {
-        bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    }
 
     private Writer() {
 
