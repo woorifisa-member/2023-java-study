@@ -21,8 +21,8 @@ public class Lotto {
         this.numbers = numbers;
     }
     private void validate(List<Integer> numbers) {
-        validateSize(numbers);
-        validateDuplicatedNumber(numbers);
+        Validator.validateSize(numbers);
+        Validator.validateDuplicatedNumber(numbers);
     }
     public String getNumString(){
         StringJoiner joiner = new StringJoiner(", ");
@@ -39,19 +39,4 @@ public class Lotto {
         return numbers.contains(number);
     }
 
-    private void validateDuplicatedNumber(List<Integer> numbers){
-        Set<Integer> set = new HashSet<>();
-        for (Integer i : numbers){
-            set.add(i);
-        }
-        if(set.size() != numbers.size()){
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 중복되지 않은 숫자여야 합니다.");
-        }
-    }
-
-    private void validateSize(List<Integer> numbers){
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 중복되지 않은 숫자 6개여야 합니다.");
-        }
-    }
 }
