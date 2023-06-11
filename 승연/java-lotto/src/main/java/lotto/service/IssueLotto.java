@@ -22,7 +22,7 @@ public class IssueLotto implements LottoIssueService{
         return randomNumbers;
     }
 
-    // 구매할 가격만큼 로또 발행
+    // 구매한 가격만큼 로또 발행
     public IssuedLotto issueLotto(long price){
         List<Lotto> lottoList = new ArrayList<>();
         for (int i=0; i<price/1_000; i++){
@@ -39,7 +39,5 @@ public class IssueLotto implements LottoIssueService{
         return winLotto;
     }
 
-
-//    WinLotto winLotto = lottoIssueService.issueWinLotto(numbers, bonusNumber);
 
 }

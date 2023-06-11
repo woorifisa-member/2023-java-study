@@ -24,7 +24,8 @@ public class UserInput implements Controller {
         // TODO 컬렉션 프레임워크 공부 후 리팩토링 해보기
         List<Integer> winNumList = new ArrayList<>();
         // 사용자 입력 받기 (String[] 타입으로)
-        String[] winNumStrLsit = Console.readLine().split(",");
+        String winNumInput = Console.readLine();
+        String[] winNumStrLsit = winNumInput.split(",");
         // String[] -> List<Integer> 변환
         for (int i = 0; i < winNumStrLsit.length; i++) {
             winNumList.add(Integer.parseInt(winNumStrLsit[i]));

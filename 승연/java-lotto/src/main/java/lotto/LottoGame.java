@@ -43,8 +43,10 @@ public class LottoGame {
     }
 
     private IssuedLotto issueLotto() {
+        Writer.println("구매금액을 입력해 주세요.");
         long price = controller.getPrice();
         int numLotto = (int)price/1000;
+        Writer.println(" ");
         Writer.print(numLotto);
         Writer.println("개를 구매했습니다.");
 
@@ -56,7 +58,10 @@ public class LottoGame {
     }
 
     private WinLotto issueWinLotto() {
+        Writer.println(" ");
+        Writer.println("당첨 번호를 입력해 주세요.");
         List<Integer> numbers = controller.getWinNumber();
+        Writer.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = controller.getBonusNumber();
 
         WinLotto winLotto = lottoIssueService.issueWinLotto(numbers, bonusNumber);
@@ -65,7 +70,9 @@ public class LottoGame {
     }
 
     private void compileStatistics(IssuedLotto issuedLotto, WinLotto winLotto) {
-        statisticsService.compileStatistics(null, null);
+        Writer.println("당첨 통계");
+        Writer.println("---");
+        statisticsService.compileStatistics(issuedLotto, winLotto);
     }
 
 }
