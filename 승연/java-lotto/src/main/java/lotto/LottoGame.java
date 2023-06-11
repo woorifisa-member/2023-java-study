@@ -4,10 +4,14 @@ import java.util.List;
 import lotto.console.Controller;
 import lotto.console.UserInput;
 import lotto.domain.IssuedLotto;
+import lotto.domain.Lotto;
 import lotto.domain.WinLotto;
+import lotto.io.Writer;
+import lotto.service.CompareLotto;
 import lotto.service.IssueLotto;
 import lotto.service.LottoIssueService;
 import lotto.service.StatisticsService;
+import lotto.io.Writer;
 
 public class LottoGame {
 
@@ -19,7 +23,7 @@ public class LottoGame {
         // TODO
         controller = new UserInput();
         lottoIssueService = new IssueLotto();
-        statisticsService = null;
+        statisticsService = new CompareLotto();
     }
 
     public static void run() {
@@ -40,10 +44,15 @@ public class LottoGame {
 
     private IssuedLotto issueLotto() {
         long price = controller.getPrice();
+        int numLotto = (int)price/1000;
+        Writer.print(numLotto);
+        Writer.println("개를 구매했습니다.");
 
         IssuedLotto issuedLotto = lottoIssueService.issueLotto(price);
-
-        return null;
+        for (Lotto oneLotto:issuedLotto.lotto){
+            Writer.println(oneLotto.numbers);
+        }
+        return issuedLotto;
     }
 
     private WinLotto issueWinLotto() {

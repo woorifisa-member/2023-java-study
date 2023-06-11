@@ -13,8 +13,8 @@ public class Lotto {
     public static final int PRICE = 1_000;
     public static final int SIZE = 6;
 
-    // 발행할 로또 수?
-    private final List<Integer> numbers;
+    // LottoGame 파일에서 출력시 사용하려고 public으로 변경
+    public final List<Integer> numbers;
 
 
     // 생성자
