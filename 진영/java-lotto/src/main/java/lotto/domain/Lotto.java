@@ -29,4 +29,12 @@ public class Lotto {
                 .forEach(joiner::add);
         return String.join("","[",joiner.toString(),"]");
     }
+
+    public int getNumberByIndex(int index){
+        return numbers.get(index);
+    }
+
+    public boolean contains(int number){
+        return numbers.contains(number);
+    }
 }

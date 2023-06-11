@@ -2,11 +2,13 @@ package lotto.io;
 
 import lotto.domain.IssuedLotto;
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.List;
+import java.util.Map;
 import java.util.StringJoiner;
 
 public final class Writer {
@@ -56,7 +58,22 @@ public final class Writer {
             write(lotto.getNumString(),true);
         }
 
-
     }
 
+    public static void printLottoResult(Integer purchaseAmount,Map<Rank, Integer> map) {
+        write("당첨 통계",true);
+        write("---",true);
+        double profitSum = 0;
+        for(Map.Entry<Rank,Integer> entry : map.entrySet()){
+            Rank rank = entry.getKey();
+            if(entry.getValue() > 0){
+                profitSum+=rank.getPrizeMoney();
+            }
+            write(rank.getMessage(entry.getValue()),true);
+        }
+        double rateProfit = (profitSum / purchaseAmount) * 100 ;
+        write("총 수익률은 "+rateProfit+"%입니다.",true);
+
+
+    }
 }

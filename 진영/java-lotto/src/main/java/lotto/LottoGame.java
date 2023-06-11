@@ -17,6 +17,7 @@ public class LottoGame {
         LottoGame lottoGame = new LottoGame();
         IssuedLotto issuedLotto = lottoGame.lottoController.purchaseLotto();
         WinLotto winLotto = lottoGame.lottoController.setWinLotto();
+        lottoGame.lottoController.endGame(issuedLotto,winLotto);
     }
 
 }

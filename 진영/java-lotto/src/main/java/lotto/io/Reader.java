@@ -15,6 +15,7 @@ public final class Reader {
     public Integer inputPurchaseAmount() {
         Message.PURCHASE.printMessage();
         String str = Console.readLine();
+        validateNumber(str);
         return Integer.parseInt(str);
     }
 
