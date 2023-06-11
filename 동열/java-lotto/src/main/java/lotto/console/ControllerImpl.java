@@ -8,17 +8,17 @@ public class ControllerImpl implements Controller {
 
     @Override
     public long getPrice() {
-        return Validator.validPriceInput(Console.readLine());
+        return Validator.validatePriceInput(Console.readLine());
     }
 
     @Override
     public List<Integer> getWinNumber() {
-        return Validator.validWinNumberInput(Console.readLine());
+        return Validator.validateWinNumberInput(Console.readLine());
     }
 
     @Override
     public int getBonusNumber() {
-        return Validator.validBonusNumberInput(Console.readLine());
+        return Validator.validateBonusNumberInput(Console.readLine());
     }
 
 }

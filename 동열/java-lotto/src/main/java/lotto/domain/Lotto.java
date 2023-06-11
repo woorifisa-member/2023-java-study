@@ -2,9 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import lotto.validation.Validator;
 
 public class Lotto {
@@ -18,17 +16,18 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         Validator.validateLottoNumber(numbers);
+        numbers.sort(Integer::compareTo);
         this.numbers = numbers;
     }
 
     public static Lotto issue() {
-        Set<Integer> set = new HashSet<>();
-
-        while (set.size() < SIZE) {
-            set.add(Randoms.pickNumberInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER));
-        }
-
-        return new Lotto(new ArrayList<>(set));
+        return new Lotto(
+            new ArrayList<>(
+                Randoms.pickUniqueNumbersInRange(
+                    Lotto.MIN_LOTTO_NUMBER, Lotto.MAX_LOTTO_NUMBER, 6
+                )
+            )
+        );
     }
 
     public static Lotto issue(List<Integer> numbers) {
@@ -45,7 +44,7 @@ public class Lotto {
         sb.append("[");
 
         for (int i = 0; i < SIZE; i++) {
-            sb.append(i);
+            sb.append(numbers.get(i));
             if (i != SIZE - 1) {
                 sb.append(", ");
             }

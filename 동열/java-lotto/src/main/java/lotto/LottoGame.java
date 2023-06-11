@@ -10,6 +10,8 @@ import lotto.io.Writer;
 import lotto.service.LottoIssueService;
 import lotto.service.LottoIssueServiceImpl;
 import lotto.service.StatisticsService;
+import lotto.service.StatisticsServiceImpl;
+import lotto.validation.Validator;
 
 public class LottoGame {
 
@@ -18,10 +20,9 @@ public class LottoGame {
     private final StatisticsService statisticsService;
 
     private LottoGame() {
-        // TODO
         controller = new ControllerImpl();
         lottoIssueService = new LottoIssueServiceImpl();
-        statisticsService = null;
+        statisticsService = new StatisticsServiceImpl();
     }
 
     public static void run() {
@@ -62,6 +63,8 @@ public class LottoGame {
 
         Writer.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = controller.getBonusNumber();
+
+        Validator.validateDuplicate(numbers, bonusNumber);
 
         return lottoIssueService.issueWinLotto(numbers, bonusNumber);
     }

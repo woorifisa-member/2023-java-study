@@ -24,17 +24,21 @@ public final class Validator {
         }
     }
 
-    public static long validPriceInput(String price) {
+    public static long validatePriceInput(String price) {
         try {
-            long price =  Long.parseLong(price);
+            long result =  Long.parseLong(price);
+
+            if (result < Lotto.PRICE || result % Lotto.PRICE != 0) {
+                throw new NumberFormatException();
+            }
             
-            return 
+            return result;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR + "잘못된 가격을 입력했습니다.");
         }
     }
 
-    public static List<Integer> validWinNumberInput(String numbers) {
+    public static List<Integer> validateWinNumberInput(String numbers) {
         String[] nums = numbers.split(",");
 
         try {
@@ -48,7 +52,7 @@ public final class Validator {
         }
     }
 
-    public static int validBonusNumberInput(String number) {
+    public static int validateBonusNumberInput(String number) {
         try {
 
             int bonusNumber = Integer.parseInt(number);
@@ -67,4 +71,9 @@ public final class Validator {
         return number;
     }
 
+    public static void validateDuplicate(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ERROR + "중복된 번호를 입력했습니다.");
+        }
+    }
 }

@@ -10,7 +10,7 @@ public class WinResult {
     private final long output;
 
     public WinResult(long input, Map<Rank, Integer> result) {
-        this.input = input;
+        this.input = input * Lotto.PRICE;
         this.result = result;
         this.output = calculateOutput(result);
         this.rateOfReturn = calculateRate();
@@ -35,15 +35,15 @@ public class WinResult {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        for (Map.Entry<Rank, Integer> Rank : result.entrySet()) {
-            sb.append(Rank.getKey())
+        for (Map.Entry<Rank, Integer> rank : result.entrySet()) {
+            sb.append(rank.getKey().getMessage())
               .append(" - ")
-              .append(Rank.getValue())
+              .append(rank.getValue())
               .append("개")
               .append('\n');
         }
 
-        sb.append(String.format("촐 수익률은 %f.1%%입니다.", rateOfReturn));
+        sb.append(String.format("총 수익률은 %.1f%%입니다.", rateOfReturn));
 
         return sb.toString();
     }

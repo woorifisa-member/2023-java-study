@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Map;
@@ -15,6 +16,7 @@ public enum Rank {
     ;
 
     private static final Map<Rank, Integer> ranks;
+    private static final DecimalFormat formatter;
 
     private final int count;
     private final int prizeMoney;
@@ -25,6 +27,7 @@ public enum Rank {
     }
 
     static {
+        formatter = new DecimalFormat("###,###");
         ranks = new TreeMap<>(Comparator.comparing(Rank::getPrizeMoney));
 
         Arrays.stream(Rank.values())
@@ -49,6 +52,17 @@ public enum Rank {
 
     public int getPrizeMoney() {
         return prizeMoney;
+    }
+
+    public String getMessage() {
+        if (this == SECOND) {
+            return String.format("%d개 일치, 보너스 볼 일치 (%s원)", count, format(prizeMoney));
+        }
+        return String.format("%d개 일치 (%s원)", count, format(prizeMoney));
+    }
+
+    private String format(int prizeMoney) {
+        return formatter.format(prizeMoney);
     }
 
 }
