@@ -23,6 +23,7 @@ public class LottoIssueServiceImpl implements LottoIssueService {
 
     @Override
     public WinLotto issueWinLotto(List<Integer> numbers, int bonusNumber) {
-        return null;
+        return new WinLotto(Lotto.issue(numbers), bonusNumber);
     }
+
 }
