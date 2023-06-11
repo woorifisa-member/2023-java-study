@@ -75,4 +75,5 @@ public class LottoGame {
         statisticsService.compileStatistics(issuedLotto, winLotto);
     }
 
+
 }
