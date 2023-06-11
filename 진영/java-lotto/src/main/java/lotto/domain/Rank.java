@@ -48,7 +48,7 @@ public enum Rank {
         return String.format(message, count);
     }
 
-    public double getPrizeMoney(){
+    public double getPrizeMoney() {
         return (double) this.prizeMoney;
     }
 

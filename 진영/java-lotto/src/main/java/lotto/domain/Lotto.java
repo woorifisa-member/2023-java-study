@@ -20,22 +20,24 @@ public class Lotto {
         validate(numbers);
         this.numbers = numbers;
     }
+
     private void validate(List<Integer> numbers) {
         Validator.validateSize(numbers);
         Validator.validateDuplicatedNumber(numbers);
     }
-    public String getNumString(){
+
+    public String getNumString() {
         StringJoiner joiner = new StringJoiner(", ");
         numbers.stream().map(String::valueOf)
                 .forEach(joiner::add);
-        return String.join("","[",joiner.toString(),"]");
+        return String.join("", "[", joiner.toString(), "]");
     }
 
-    public int getNumberByIndex(int index){
+    public int getNumberByIndex(int index) {
         return numbers.get(index);
     }
 
-    public boolean contains(int number){
+    public boolean contains(int number) {
         return numbers.contains(number);
     }
 

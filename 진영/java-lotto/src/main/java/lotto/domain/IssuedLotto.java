@@ -9,15 +9,16 @@ public class IssuedLotto {
     public IssuedLotto(List<Lotto> lotto) {
         this.lotto = lotto;
     }
-    public List<Lotto> getLottoList(){
+
+    public List<Lotto> getLottoList() {
         return lotto;
     }
 
-    public Lotto getLottoByIndex(int index){
+    public Lotto getLottoByIndex(int index) {
         return lotto.get(index);
     }
 
-    public int getLottoCount(){
+    public int getLottoCount() {
         return lotto.size();
     }
 

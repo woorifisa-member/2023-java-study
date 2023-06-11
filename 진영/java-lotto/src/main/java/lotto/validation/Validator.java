@@ -17,35 +17,36 @@ public final class Validator {
         }
     }
 
-    public static void validate(List<Integer> numList, int number){
+    public static void validate(List<Integer> numList, int number) {
         validateNumberRange(numList);
         validateNumberRange(number);
     }
-    public static void validateNumberRange(int num){
-            if( num < 1 && 45 < num){
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            }
+
+    public static void validateNumberRange(int num) {
+        if (num < 1 && 45 < num) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
     }
 
-    public static void validateNumberRange(List<Integer> numList){
-        for(Integer num : numList){
-            if( num < 1 && 45 < num){
+    public static void validateNumberRange(List<Integer> numList) {
+        for (Integer num : numList) {
+            if (num < 1 && 45 < num) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
     }
 
-    public static void validateDuplicatedNumber(List<Integer> numbers){
+    public static void validateDuplicatedNumber(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>();
-        for (Integer i : numbers){
+        for (Integer i : numbers) {
             set.add(i);
         }
-        if(set.size() != numbers.size()){
+        if (set.size() != numbers.size()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 중복되지 않은 숫자여야 합니다.");
         }
     }
 
-    public static void validateSize(List<Integer> numbers){
+    public static void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 중복되지 않은 숫자 6개여야 합니다.");
         }

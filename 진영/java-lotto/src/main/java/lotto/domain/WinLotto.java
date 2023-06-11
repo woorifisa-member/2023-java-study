@@ -10,11 +10,11 @@ public class WinLotto {
         this.bonusNumber = bonusNumber;
     }
 
-    public boolean contains(int number){
-       return WinLotto.contains(number);
+    public boolean contains(int number) {
+        return WinLotto.contains(number);
     }
 
-    public int getBonus(){
+    public int getBonus() {
         return bonusNumber;
     }
 

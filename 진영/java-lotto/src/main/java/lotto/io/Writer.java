@@ -51,28 +51,28 @@ public final class Writer {
         }
     }
 
-    public static void printMyLottoList(IssuedLotto issuedLotto){
+    public static void printMyLottoList(IssuedLotto issuedLotto) {
         List<Lotto> lottos = issuedLotto.getLottoList();
-            write(lottos.size()+"개를 구매했습니다.",true);
-        for(Lotto lotto : lottos){
-            write(lotto.getNumString(),true);
+        write(lottos.size() + "개를 구매했습니다.", true);
+        for (Lotto lotto : lottos) {
+            write(lotto.getNumString(), true);
         }
 
     }
 
-    public static void printLottoResult(Integer purchaseAmount,Map<Rank, Integer> map) {
-        write("당첨 통계",true);
-        write("---",true);
+    public static void printLottoResult(Integer purchaseAmount, Map<Rank, Integer> map) {
+        write("당첨 통계", true);
+        write("---", true);
         double profitSum = 0;
-        for(Map.Entry<Rank,Integer> entry : map.entrySet()){
+        for (Map.Entry<Rank, Integer> entry : map.entrySet()) {
             Rank rank = entry.getKey();
-            if(entry.getValue() > 0){
-                profitSum+=rank.getPrizeMoney();
+            if (entry.getValue() > 0) {
+                profitSum += rank.getPrizeMoney();
             }
-            write(rank.getMessage(entry.getValue()),true);
+            write(rank.getMessage(entry.getValue()), true);
         }
-        double rateProfit = (profitSum / purchaseAmount) * 100 ;
-        write("총 수익률은 "+rateProfit+"%입니다.",true);
+        double rateProfit = (profitSum / purchaseAmount) * 100;
+        write("총 수익률은 " + rateProfit + "%입니다.", true);
 
 
     }

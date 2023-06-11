@@ -6,14 +6,16 @@ public enum Message {
     SET_BONUS_NUM("보너스 번호를 입력해 주세요");
 
     private final String message;
-    Message(String str){
+
+    Message(String str) {
         this.message = str;
     }
-    public String getMessage(){
+
+    public String getMessage() {
         return this.message;
     }
 
-    public void printMessage(){
+    public void printMessage() {
         System.out.println(getMessage());
     }
 
