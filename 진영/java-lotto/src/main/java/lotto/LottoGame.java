@@ -14,10 +14,16 @@ public class LottoGame {
     }
 
     public static void run() {
-        LottoGame lottoGame = new LottoGame();
-        IssuedLotto issuedLotto = lottoGame.lottoController.purchaseLotto();
-        WinLotto winLotto = lottoGame.lottoController.setWinLotto();
-        lottoGame.lottoController.endGame(issuedLotto,winLotto);
+        try {
+            LottoGame lottoGame = new LottoGame();
+            IssuedLotto issuedLotto = lottoGame.lottoController.purchaseLotto();
+            WinLotto winLotto = lottoGame.lottoController.setWinLotto();
+            lottoGame.lottoController.endGame(issuedLotto,winLotto);
+        }catch (IllegalArgumentException e){
+            System.out.println("에러발생");
+            System.out.println(e);
+        }
+
     }
 
 }
