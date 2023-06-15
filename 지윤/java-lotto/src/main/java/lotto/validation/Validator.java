@@ -55,11 +55,9 @@ public final class Validator {
 
     public static void validateInputBonusNumber(int bonusNumber, List<Integer> winLotto) {
         validateRangeOfNumbers(bonusNumber);
-        for (int winNum : winLotto) {
-            if (winNum == bonusNumber) {
+            if (winLotto.contains(bonusNumber)) {
                 throw new IllegalArgumentException("해당 숫자는 이미 당첨번호에 있습니다. 당첨번호에 없는 번호를 넣어주세요.");
             }
-        }
     }
 
 
