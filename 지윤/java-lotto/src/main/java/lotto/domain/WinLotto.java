@@ -4,16 +4,16 @@ import java.util.List;
 
 public class WinLotto {
 
-    private final Lotto WINLOTTO;
+    private final Lotto winLotto;
     private final int bonusNumber;
 
     public WinLotto(Lotto winLotto, int bonusNumber) {
-        WINLOTTO = winLotto;
+        this.winLotto = winLotto;
         this.bonusNumber = bonusNumber;
     }
 
     public List<Integer> getWinLotto() {
-        return WINLOTTO.getNumbers();
+        return winLotto.getNumbers();
     }
 
     public int getBonusNumber() {
