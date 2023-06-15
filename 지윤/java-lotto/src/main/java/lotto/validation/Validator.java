@@ -39,7 +39,7 @@ public final class Validator {
         String[] inputArr = inputNumbers.split(",");
         Set<Integer> checkSet = new HashSet<>();
         if (inputArr.length != 6) {
-            throw new IllegalArgumentException("숫자 6개를 쉽표로 구분지어 입력해주세요.");
+            throw new IllegalArgumentException("숫자 6개를 쉼표로 구분지어 입력해주세요.");
         }
         for (String input : inputArr) {
             int parsedIntInput = Integer.parseInt(input);
