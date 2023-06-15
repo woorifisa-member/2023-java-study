@@ -29,5 +29,4 @@ public final class Writer {
             System.out.print(s);
         }
     }
-
 }
