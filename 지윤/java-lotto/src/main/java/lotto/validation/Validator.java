@@ -64,7 +64,7 @@ public final class Validator {
 
 
     public static void validateRangeOfNumbers(int number) {
-        if (!(number >= Lotto.MIN_LOTTO_NUMBER && number <= Lotto.MAX_LOTTO_NUMBER)) {
+        if (number < Lotto.MIN_LOTTO_NUMBER || number > Lotto.MAX_LOTTO_NUMBER) {
             throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
