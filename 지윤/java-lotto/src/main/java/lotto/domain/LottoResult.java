@@ -27,7 +27,7 @@ public class LottoResult {
 
     public static String formatResult(int count, int prize, Rank rank) {
 
-        if (rank.name().equals("SECOND")) {
+        if (rank == Rank.SECOND) {
             return String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", count, prize, getResult()[rank.ordinal()]);
         }
 
