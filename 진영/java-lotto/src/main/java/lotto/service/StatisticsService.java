@@ -32,11 +32,7 @@ public class StatisticsService {
     }
 
     public void saveRank(Rank rank) {
-        if (map.get(rank) == null) {
-            map.put(rank, 1);
-        } else {
-            map.put(rank, map.get(rank) + 1);
-        }
+        map.put(rank,map.getOrDefault(rank,0)+1);
     }
 
     public void initMap() {

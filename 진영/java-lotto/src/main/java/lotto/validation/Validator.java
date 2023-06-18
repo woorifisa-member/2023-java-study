@@ -1,5 +1,7 @@
 package lotto.validation;
 
+import lotto.domain.Lotto;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,14 +25,14 @@ public final class Validator {
     }
 
     public static void validateNumberRange(int num) {
-        if (num < 1 && 45 < num) {
+        if (num < Lotto.MIN_LOTTO_NUMBER && Lotto.MAX_LOTTO_NUMBER < num) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
     public static void validateNumberRange(List<Integer> numList) {
         for (Integer num : numList) {
-            if (num < 1 && 45 < num) {
+            if (num < Lotto.MIN_LOTTO_NUMBER && Lotto.MAX_LOTTO_NUMBER < num) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
@@ -47,7 +49,7 @@ public final class Validator {
     }
 
     public static void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != Lotto.SIZE) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 중복되지 않은 숫자 6개여야 합니다.");
         }
     }

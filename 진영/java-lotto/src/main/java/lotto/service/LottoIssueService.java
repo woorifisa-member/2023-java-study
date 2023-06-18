@@ -17,10 +17,6 @@ public class LottoIssueService {
         return new IssuedLotto(lottos);
     }
 
-    public WinLotto issueWinLotto(List<Integer> numbers, int bonusNumber) {
-        return null;
-    }
-
     public List<Integer> generateNumber() {
         List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(numbers);
