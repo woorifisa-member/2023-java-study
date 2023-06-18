@@ -5,6 +5,7 @@ import lotto.console.Controller;
 import lotto.console.HelloControllerImpl;
 import lotto.domain.IssuedLotto;
 import lotto.domain.WinLotto;
+import lotto.io.Writer;
 import lotto.service.HelloLottoIssueServiceImpl;
 import lotto.service.HelloStatisticsServiceImpl;
 import lotto.service.LottoIssueService;

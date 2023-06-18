@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.io.Writer;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Collections;
 
@@ -14,12 +15,12 @@ public class HelloLottoIssueServiceImpl implements LottoIssueService {
     @Override
     public IssuedLotto issueLotto(long price) {
 
-        int lottosCnt = (int) (price/1000);
+        int lottosCnt = (int) (price/Lotto.PRICE);
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i < lottosCnt; i++){
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Lotto.MIN_LOTTO_NUMBER, Lotto.MAX_LOTTO_NUMBER, Lotto.SIZE);
+//            numbers.sort(Comparator.naturalOrder()); -> 이거 왜 에러나지?
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
 

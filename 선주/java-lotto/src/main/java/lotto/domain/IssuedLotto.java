@@ -16,13 +16,13 @@ public class IssuedLotto {
 
     @Override
     public String toString() {
-        String str = "";
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < this.lotto.size(); i++){
-            str += this.lotto.get(i);
+            stringBuilder.append(this.lotto.get(i));
             if (i < this.lotto.size() - 1){
-                str += "\n";
+                stringBuilder.append("\n");
             }
         }
-        return str;
+        return String.valueOf(stringBuilder);
     }
 }

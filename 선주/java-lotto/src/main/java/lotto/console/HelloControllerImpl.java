@@ -11,9 +11,7 @@ public class HelloControllerImpl implements Controller {
     @Override
     public long getPrice() {
         Writer.println("구입금액을 입력해 주세요.");
-        long price = Integer.parseInt(Reader.read());
-
-        Validator.validatePrice(price);
+        long price = Validator.validatePrice(Reader.read());
 
         return price;
     }
@@ -27,10 +25,11 @@ public class HelloControllerImpl implements Controller {
 
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < strNumbers.length; i++){
-            Validator.validateNumber(Integer.parseInt(strNumbers[i]));
-            numbers.add(Integer.parseInt(strNumbers[i]));
+            int num = Validator.validateNumber(strNumbers[i]);
+            numbers.add(num);
         }
-        Validator.validateLottoLength(numbers);
+        numbers = Validator.validateLottoLength(numbers);
+        numbers = Validator.validateDuplication(numbers);
 
         return numbers;
     }
@@ -40,8 +39,6 @@ public class HelloControllerImpl implements Controller {
         Writer.println("");
         Writer.println("보너스 번호를 입력해 주세요.");
 
-        Validator.validateNumber(Integer.parseInt(Reader.read()));
-
-        return Integer.parseInt(Reader.read());
+        return Validator.validateNumber(Reader.read());
     }
 }

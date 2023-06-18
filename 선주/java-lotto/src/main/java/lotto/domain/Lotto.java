@@ -25,15 +25,16 @@ public class Lotto {
     // TODO: 추가 기능 구현
 
     public String toString() {
-        String str = "[";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
         for (int i = 0; i < this.numbers.size(); i++){
-            str += this.numbers.get(i);
+            stringBuilder.append(this.numbers.get(i));
             if (i < this.numbers.size() - 1){
-                str += ", ";
+                stringBuilder.append(", ");
             }
 
         }
-        return str += "]";
+        return String.valueOf(stringBuilder.append("]"));
     }
 
 
