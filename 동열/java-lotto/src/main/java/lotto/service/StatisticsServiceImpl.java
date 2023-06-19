@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Function;
 import lotto.domain.IssuedLotto;
 import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
@@ -25,6 +26,12 @@ public class StatisticsServiceImpl implements StatisticsService {
         issuedLotto.getLotto()
                    .stream()
                    .map(lotto -> this.getResult(lotto, winLotto))
+            // .map(new Function<Lotto, Object>() {
+            //     @Override
+            //     public Object apply(Lotto lotto) {
+            //         return null;
+            //     }
+            // })
                    .map(lottoResult -> Rank.getRank(lottoResult.getCorrectCount(), lottoResult.isHavingBonusNumber()))
                    .filter(Objects::nonNull)
                    .forEach(rank -> statResult.put(rank, statResult.get(rank) + 1));
