@@ -10,5 +10,7 @@
 
 3. 모든 클래스를 `@OneToMany`, `@ManyToOne` 활용해서 양방향 관계 설정하기
 
+4. `Lombok` 활용
+
 > 기준 ERD https://gitmind.com/app/docs/fw8j8nst
 > 참고: https://tecoble.techcourse.co.kr/post/2021-07-30-jpa-mapping/
