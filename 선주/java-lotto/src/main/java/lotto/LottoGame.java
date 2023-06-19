@@ -10,6 +10,7 @@ import lotto.service.HelloLottoIssueServiceImpl;
 import lotto.service.HelloStatisticsServiceImpl;
 import lotto.service.LottoIssueService;
 import lotto.service.StatisticsService;
+import lotto.validation.Validator;
 
 public class LottoGame {
 
@@ -30,7 +31,7 @@ public class LottoGame {
         try {
             lottoGame.start();
         } catch (IllegalArgumentException e) {
-
+            Writer.print(e.getMessage());
         }
     }
 
@@ -50,6 +51,7 @@ public class LottoGame {
 
     private WinLotto issueWinLotto() {
         List<Integer> numbers = controller.getWinNumber();
+
         int bonusNumber = controller.getBonusNumber();
 
         return lottoIssueService.issueWinLotto(numbers, bonusNumber);

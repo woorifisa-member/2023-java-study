@@ -7,6 +7,8 @@ import lotto.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.validation.Validator.validateBonusLottoLength;
+
 public class HelloControllerImpl implements Controller {
     @Override
     public long getPrice() {
@@ -28,8 +30,6 @@ public class HelloControllerImpl implements Controller {
             int num = Validator.validateNumber(strNumbers[i]);
             numbers.add(num);
         }
-        numbers = Validator.validateLottoLength(numbers);
-        numbers = Validator.validateDuplication(numbers);
 
         return numbers;
     }

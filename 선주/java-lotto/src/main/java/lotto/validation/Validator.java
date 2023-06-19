@@ -13,14 +13,14 @@ public final class Validator {
     // TODO: 여러 검증 로직을 짜보세요
     public static List<Integer> validateLottoLength(List<Integer> numbers) {
         if (numbers.size() != Lotto.SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자 6개를 입력하세요.");
         }
         return numbers;
     }
 
     public static void validateBonusLottoLength(List<Integer> numbers) {
         if (numbers.size() != 1) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자 1개를 입력하세요.");
         }
     }
 
