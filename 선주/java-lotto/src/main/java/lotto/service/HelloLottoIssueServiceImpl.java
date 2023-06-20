@@ -43,9 +43,6 @@ public class HelloLottoIssueServiceImpl implements LottoIssueService {
 
         Lotto lotto = new Lotto(numbers);
 
-        Validator.validateLottoLength(numbers);
-        Validator.validateDuplication(numbers);
-
         return new WinLotto(lotto, bonusNumber);
     }
 }

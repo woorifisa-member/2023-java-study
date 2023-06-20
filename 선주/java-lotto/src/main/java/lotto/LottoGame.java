@@ -37,7 +37,8 @@ public class LottoGame {
 
     private void start() {
         IssuedLotto issuedLotto = issueLotto();
-        WinLotto winLotto = issueWinLotto();
+        WinLotto winLotto =
+                issueWinLotto();
         compileStatistics(issuedLotto, winLotto);
     }
 

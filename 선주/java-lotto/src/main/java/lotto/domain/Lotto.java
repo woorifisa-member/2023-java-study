@@ -19,6 +19,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         Validator.validateLottoLength(numbers);
+        Validator.validateDuplication(numbers);
         this.numbers = numbers;
     }
 
