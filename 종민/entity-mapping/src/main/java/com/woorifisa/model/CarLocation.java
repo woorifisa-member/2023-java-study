@@ -13,12 +13,12 @@ public class CarLocation implements Serializable {
     @Id
     @ManyToOne
     @JoinColumn(name = "LOCATION_ID",nullable = false)
-    private Location locationId;
+    private Location location;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "CAR_ID",nullable = false)
-    private Car carId;
+    private Car car;
 
 
 }

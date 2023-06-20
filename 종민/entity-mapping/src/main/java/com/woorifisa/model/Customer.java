@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -19,4 +21,10 @@ public class Customer {
 
     @Column
     private String address;
+
+    @OneToMany(mappedBy = "customerId")
+    List<Return> returns = new ArrayList<>();
+
+    @OneToMany(mappedBy = "customerId")
+    List<Reserve> reserves = new ArrayList<>();
 }
