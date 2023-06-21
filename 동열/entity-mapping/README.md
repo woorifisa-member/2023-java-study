@@ -4,7 +4,7 @@
 
 1. CarLocation 클래스 활용
    * Car - Location N:M (다대다) 관계를 CarLocation 테이블을 활용해서
-   * Car - CarLocation N:1, CarLocation - Location 1:M 으로 만들기
+   * Car - CarLocation 1:N, CarLocation - Location M:1 으로 만들기
 
 2. 모든 테이블 적절한 PK 설정
 
